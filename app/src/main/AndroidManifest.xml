@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".customer_options"></activity>
+        <activity android:name=".add_admin"></activity>
+        <activity android:name=".add_service" />
+        <activity android:name=".worker_display" />
+        <activity android:name=".customer_display" />
+        <activity android:name=".admin_options" />
+        <activity android:name=".customer_options" />
         <activity android:name=".worker_login" />
         <activity android:name=".salary" />
         <activity android:name=".customer_registration" />

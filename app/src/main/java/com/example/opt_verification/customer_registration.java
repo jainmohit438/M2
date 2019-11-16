@@ -40,6 +40,7 @@ public class customer_registration extends AppCompatActivity {
             public void onClick(View view) {
 
                 addcustomer() ;
+
                 Intent intent = new Intent(getApplicationContext() , customer_options.class) ;
                 startActivity(intent);
 
