@@ -71,7 +71,7 @@ public class customer_registration extends AppCompatActivity {
 
             Toast.makeText(this,"Customer Added",Toast.LENGTH_LONG).show();
 
-            Intent intent = new Intent(getApplicationContext() , display.class) ;
+            Intent intent = new Intent(getApplicationContext() , customer_options.class) ;
             startActivity(intent) ;
         }
 

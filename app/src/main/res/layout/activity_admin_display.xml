@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".add_admin">
+    tools:context=".admin_display">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,30 +15,18 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <EditText
+            <ListView
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:id="@+id/et_name"
-                android:hint="Enter name of new admin."/>
+                android:layout_height="wrap_content"
+                android:id="@+id/lv_admin_display">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:id="@+id/et_number"
-                android:hint="Enter mobile number here."
-                android:inputType="number"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:id="@+id/et_password"
-                android:hint="Enter password here." />
+            </ListView>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:id="@+id/btn_create_new_admin"
-                android:text="Create" />
+                android:id="@+id/btn_admin_master"
+                android:text="Login using master admin and password."/>
 
         </LinearLayout>
     </ScrollView>

@@ -19,54 +19,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class worker_registration extends AppCompatActivity {
 
-    Button btnsubmit ,btnnext ;
+    Button btnsubmit  ;
 
     EditText etname , etaadhar ;
 
     Spinner spnwork ;
 
-    ListView lvdisplay ;
-
-    List<workers> workerlist ;
 
     DatabaseReference dbWorker ;
-
-    /*
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        dbWorker.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Toast.makeText( getApplicationContext() , "Button clicked. " , Toast.LENGTH_LONG).show() ;
-
-                //workerlist.clear() ;
-
-                for (DataSnapshot workersnap : dataSnapshot.getChildren()){
-                    workers w2 = workersnap.getValue(workers.class) ;
-                    workerlist.add(w2) ;
-                }
-
-                list adapter = new list( worker_registration.this , workerlist ) ;
-
-                lvdisplay.setAdapter(adapter) ;
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +39,6 @@ public class worker_registration extends AppCompatActivity {
         setContentView(R.layout.activity_worker_registration);
 
         btnsubmit = findViewById(R.id.btn_submit) ;
-        btnnext = findViewById(R.id.btn_next) ;
 
         etaadhar = findViewById(R.id.et_aadhar) ;
         etname = findViewById(R.id.et_name) ;
@@ -88,16 +52,6 @@ public class worker_registration extends AppCompatActivity {
             public void onClick(View view) {
 
                 addWorker() ;
-
-            }
-        });
-
-        btnnext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent( getApplicationContext() , customer_login.class ) ;
-                startActivity(intent) ;
 
             }
         });
@@ -119,7 +73,7 @@ public class worker_registration extends AppCompatActivity {
 
             String id = dbWorker.push().getKey() ;
 
-            workers w = new workers( name , aadhar , work ) ;
+            worker_details w = new worker_details( name , aadhar , work ) ;
 
             dbWorker.child(id).setValue(w) ;
 

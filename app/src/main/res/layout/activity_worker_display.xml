@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".worker_display">
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_worker_display">
+
+    </ListView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
