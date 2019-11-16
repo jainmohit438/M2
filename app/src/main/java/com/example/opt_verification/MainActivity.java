@@ -3,6 +3,7 @@ package com.example.opt_verification;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +25,9 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnverify , btnotp ;
+    Button btn_customer_login , btn_worker_login , btn_admin ;
+
+    Button btnverify , btnotp , btnnext ;
     EditText etnumber , etotp;
 
     String sent_code ;
@@ -36,108 +39,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main) ;
 
-        fbauth = FirebaseAuth.getInstance() ;
 
-        btnotp = findViewById(R.id.btnget_otp) ;
-        btnverify = findViewById(R.id.btnverify) ;
+        btn_customer_login=(Button)findViewById(R.id.btn_customer_login);
+        btn_worker_login=(Button)findViewById(R.id.btn_worker_login);
+        btn_admin = findViewById(R.id.btn_admin) ;
 
-        etnumber = findViewById(R.id.etnumber) ;
-        etotp = findViewById(R.id.etotp) ;
-
-        String sent_code ;
-
-        //fbauth = FirebaseAuth.getInstance() ;
-
-        btnotp.setOnClickListener(new View.OnClickListener() {
+        btn_customer_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText( getApplicationContext() , "Button clicked. " , Toast.LENGTH_SHORT).show() ;
-                sendotp();
+                Intent intent=new Intent(getApplicationContext(),customer_login.class);
+                startActivity(intent);
             }
         });
 
-        btnverify.setOnClickListener(new View.OnClickListener() {
+        btn_worker_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                verifycode();
+                Intent intent=new Intent( getApplicationContext() , salary.class );
+                startActivity(intent);
             }
         });
 
-    }
+        btn_admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-    private void sendotp() {
-        String num = etnumber.getText().toString() ;
+                Intent intent = new Intent(getApplicationContext() , customer_registration.class) ;
+                startActivity(intent) ;
 
-        if ( num.isEmpty() ){
-            etnumber.setError( " Entering phone number is mandatory. " );
-            etnumber.requestFocus() ;
-            return ;
-        }
+                //Toast.makeText(this , "button clicked" , Toast.LENGTH_LONG).show() ;
+            }
+        });
 
-        if ( num.length() < 10 ){
-            etnumber.setError( " Please enter a valid phone number. " );
-            etnumber.requestFocus() ;
-            return ;
-        }
-
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                num,        // Phone number to verify
-                60,                 // Timeout duration
-                TimeUnit.SECONDS,   // Unit of timeout
-                this,               // Activity (for callback binding)
-                mCallbacks);        // OnVerificationStateChangedCallbacks
-    }
-
-    PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-        @Override
-        public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-
-        }
-
-        @Override
-        public void onVerificationFailed(FirebaseException e) {
-
-        }
-
-        @Override
-        public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-            super.onCodeSent(s, forceResendingToken);
-            Toast.makeText( getApplicationContext() , "Code sent successfully. " , Toast.LENGTH_LONG).show() ;
-
-            sent_code = s ;
-
-        }
-    } ;
-
-    private void verifycode() {
-        String code = etotp.getText().toString() ;
-
-        if (code.isEmpty()){
-            etotp.setError( " Please enter a valid otp. " ) ;
-            etnumber.requestFocus() ;
-            return ;
-        }
-
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(sent_code, code) ;
-
-        signInWithPhoneAuthCredential(credential) ;
-    }
-
-    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-        fbauth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) { // if verifiaction is successful
-                            Toast.makeText( getApplicationContext() , "Verification approved." , Toast.LENGTH_LONG).show() ;
-
-                        } else { // if verification fails
-                            Toast.makeText( getApplicationContext() , "Verification failed." , Toast.LENGTH_LONG).show() ;
-
-                        }
-                    }
-                });
     }
 
 }

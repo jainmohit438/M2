@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customer_options">
+
+    <Button
+        android:id="@+id/btnhouse"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="66dp"
+        android:text="House cleaning"
+        app:layout_constraintBottom_toTopOf="@+id/btnplumber"
+        app:layout_constraintEnd_toStartOf="@+id/btnelec"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnelec"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="66dp"
+        android:text="Electrician"
+        app:layout_constraintBottom_toTopOf="@+id/btncarpenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnhouse"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnplumber"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="86dp"
+        android:text="Plumber"
+        app:layout_constraintBottom_toTopOf="@+id/btncomp"
+        app:layout_constraintEnd_toStartOf="@+id/btncarpenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnhouse" />
+
+    <Button
+        android:id="@+id/btncarpenter"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="86dp"
+        android:text="Carpenter"
+        app:layout_constraintBottom_toTopOf="@+id/btnpest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnplumber"
+        app:layout_constraintTop_toBottomOf="@+id/btnelec" />
+
+    <Button
+        android:id="@+id/btncomp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="134dp"
+        android:text="Computer/Mobile repair"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnpest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnplumber" />
+
+    <Button
+        android:id="@+id/btnpest"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="134dp"
+        android:text="Pest Control"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btncomp"
+        app:layout_constraintTop_toBottomOf="@+id/btncarpenter" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

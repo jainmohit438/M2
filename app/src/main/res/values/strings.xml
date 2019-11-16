@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">opt_verification</string>
+
+    <array name="work">
+        <item>Dusting</item>
+        <item>Cleaning</item>
+        <item>Washing</item>
+    </array>
+
 </resources>

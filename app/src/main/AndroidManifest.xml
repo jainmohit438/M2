@@ -9,6 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".customer_options"></activity>
+        <activity android:name=".worker_login" />
+        <activity android:name=".salary" />
+        <activity android:name=".customer_registration" />
+        <activity android:name=".customer_login" />
+        <activity android:name=".trial" />
+        <activity android:name=".display" />
+        <activity android:name=".worker_registration" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
