@@ -87,7 +87,7 @@ public class worker_login extends AppCompatActivity {
             return ;
         }
 
-        if ( num.length() != 10 ){
+        if ( num.length() != 13 ){
             etnumber.setError( " Please enter a valid phone number. " );
             etnumber.requestFocus() ;
             return ;
