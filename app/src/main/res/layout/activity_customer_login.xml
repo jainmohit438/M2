@@ -22,7 +22,7 @@
                 android:id="@+id/tvuserid"
                 android:layout_width="375dp"
                 android:layout_height="40dp"
-                android:text="    Enter your phone no or Email" />
+                android:text="        Enter Your UserName" />
 
             <EditText
                 android:id="@+id/etusername"
@@ -45,10 +45,10 @@
                 android:inputType="textPassword" />
 
             <Button
+                android:id="@+id/btn_submit_sigin"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:id="@+id/btn_submit_sigin"
-                android:text="Sign in"/>
+                android:text="Sign in" />
 
             <Button
                 android:id="@+id/bsignin"

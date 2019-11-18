@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class customer_registration extends AppCompatActivity {
 
 
-    EditText etname , etemail , etpassword , etphone;
+    EditText etname ,etusername, etemail , etpassword , etphone;
 
     Button btn_register , btn_options ;
 
@@ -30,6 +30,7 @@ public class customer_registration extends AppCompatActivity {
         databasecustomer= FirebaseDatabase.getInstance().getReference("customer");
 
         etname= (EditText)findViewById(R.id.etname);
+        etusername = (EditText) findViewById(R.id.etusername);
         etemail= (EditText)findViewById(R.id.etemail);
         etpassword =(EditText) findViewById(R.id.etpassword);
         etphone= (EditText) findViewById(R.id.etphone);
@@ -51,11 +52,12 @@ public class customer_registration extends AppCompatActivity {
 
     private void addcustomer(){
         String name =etname.getText().toString().trim();
+        String username = etusername.getText().toString().trim();
         String email =etemail.getText().toString().trim();
         String password =etpassword.getText().toString().trim();
         String phone =etphone.getText().toString().trim();
 
-        if(TextUtils.isEmpty(name)  || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(phone) ){
+        if(TextUtils.isEmpty(name)  || TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(phone) ){
 
             Toast.makeText(this,"Please Fill Your Entries correctly",Toast.LENGTH_LONG).show();
 
@@ -63,11 +65,11 @@ public class customer_registration extends AppCompatActivity {
 
         else {
 
-            String id= databasecustomer.push().getKey();
+            //String id= databasecustomer.push().getKey();
 
-            customer_details cust = new customer_details(name,email,password,phone);
+            customer_details cust = new customer_details(name,username,email,password,phone);
 
-            databasecustomer.child(id).setValue(cust);
+            databasecustomer.child(username).setValue(cust);
 
             Toast.makeText(this,"Customer Added",Toast.LENGTH_LONG).show();
 

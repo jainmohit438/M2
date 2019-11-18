@@ -10,13 +10,13 @@
     <ScrollView
         android:layout_width="399dp"
         android:layout_height="631dp"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteX="-4dp"
+        tools:layout_editor_absoluteY="-9dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
 
             <TextView
@@ -36,6 +36,16 @@
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="84dp" />
 
+            <TextView
+                android:id="@+id/tvusername"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                tools:text="    Enter User Name" />
+
+            <EditText
+                android:id="@+id/etusername"
+                android:layout_width="match_parent"
+                android:layout_height="65dp" />
             <TextView
                 android:id="@+id/tvEmail"
                 android:layout_width="375dp"
@@ -89,7 +99,7 @@
 
             <Button
                 android:id="@+id/bsignup"
-                android:layout_width="315dp"
+                android:layout_width="348dp"
                 android:layout_height="49dp"
                 android:text="     Signup"
                 tools:layout_editor_absoluteX="48dp"

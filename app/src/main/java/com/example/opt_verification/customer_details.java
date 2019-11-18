@@ -3,6 +3,7 @@ package com.example.opt_verification;
 public class customer_details {
 
     String cname;
+    String cusername;
     String cemail;
     String cpassword;
     String cphone;
@@ -10,8 +11,9 @@ public class customer_details {
     public customer_details() {
     }
 
-    public customer_details(String cname, String cemail, String cpassword, String cphone) {
+    public customer_details(String cname,String cusername, String cemail, String cpassword, String cphone) {
         this.cname = cname;
+        this.cusername=cusername;
         this.cemail = cemail;
         this.cpassword = cpassword;
         this.cphone = cphone;
@@ -24,6 +26,10 @@ public class customer_details {
     public void setCname(String cname) {
         this.cname = cname;
     }
+
+    public String getCusername() { return cusername; }
+
+    public void setCusername(String cusername) { this.cusername = cusername;}
 
     public String getCemail() {
         return cemail;
