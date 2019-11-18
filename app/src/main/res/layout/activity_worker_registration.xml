@@ -21,7 +21,6 @@
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:layout_marginTop="25dp"
                 android:layout_marginBottom="25dp"
                 android:ems="10"
                 android:hint="Enter your name here"
@@ -30,10 +29,16 @@
                 tools:layout_editor_absoluteY="127dp" />
 
             <EditText
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginBottom="25dp"
+                android:id="@+id/et_num"
+                android:hint="Enter your number here"/>
+
+            <EditText
                 android:id="@+id/et_aadhar"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:layout_marginTop="25dp"
                 android:layout_marginBottom="25dp"
                 android:ems="10"
                 android:hint="Enter your aadhar number here"
@@ -45,33 +50,27 @@
                 android:id="@+id/spn_work"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:layout_marginTop="25dp"
                 android:layout_marginBottom="25dp"
                 android:entries="@array/work"
                 android:textAlignment="center"
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="434dp" />
 
-
-            <LinearLayout
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="65dp"
+                android:id="@+id/btn_verify_otp"
+                android:hint="Enter otp here"
+                android:layout_marginBottom="25dp"/>
 
-                <Button
-                    android:id="@+id/btn_submit"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginBottom="25dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="100dp"
-                    android:text="Add worker."
-                    android:textAlignment="center"
-                    tools:layout_editor_absoluteX="16dp"
-                    tools:layout_editor_absoluteY="598dp" />
-
-            </LinearLayout>
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginBottom="25dp"
+                android:text="Submit"
+                android:textAlignment="center" />
 
         </LinearLayout>
 

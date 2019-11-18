@@ -26,10 +26,9 @@ public class worker_registration extends AppCompatActivity {
 
     Button btnsubmit  ;
 
-    EditText etname , etaadhar ;
+    EditText etname , etaadhar , etnum ;
 
     Spinner spnwork ;
-
 
     DatabaseReference dbWorker ;
 
@@ -42,10 +41,15 @@ public class worker_registration extends AppCompatActivity {
 
         etaadhar = findViewById(R.id.et_aadhar) ;
         etname = findViewById(R.id.et_name) ;
+        etnum = findViewById(R.id.et_num) ;
 
         spnwork = findViewById(R.id.spn_work) ;
 
         dbWorker = FirebaseDatabase.getInstance().getReference("workers") ;
+
+        Bundle b = getIntent().getExtras() ;
+
+        etnum.setText(b.getString("num")) ;
 
         btnsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,19 +67,25 @@ public class worker_registration extends AppCompatActivity {
         String name = etname.getText().toString().trim() ;
         String aadhar = etaadhar.getText().toString().trim() ;
         String work = spnwork.getSelectedItem().toString() ;
+        String num = etnum.getText().toString().trim() ;
 
         if( name.isEmpty() || aadhar.isEmpty() ){
 
             Toast.makeText( getApplicationContext() , "Please enter details properly . " , Toast.LENGTH_SHORT).show() ;
 
         }
+        else if (aadhar.length()!= 12){
+
+            etaadhar.setError( " Invalid aadhar number. " );
+            etaadhar.requestFocus() ;
+            return ;
+
+        }
         else {
 
-            String id = dbWorker.push().getKey() ;
+            worker_details w = new worker_details( name , aadhar , work , num ) ;
 
-            worker_details w = new worker_details( name , aadhar , work ) ;
-
-            dbWorker.child(id).setValue(w) ;
+            dbWorker.child(num).setValue(w) ;
 
             Toast.makeText( getApplicationContext() , "Worker added . " , Toast.LENGTH_SHORT).show() ;
 

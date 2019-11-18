@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".customer_login">
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,45 +16,45 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-
             <TextView
                 android:id="@+id/tvuserid"
-                android:layout_width="375dp"
-                android:layout_height="40dp"
-                android:text="        Enter Your UserName" />
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="Enter your phone no or Email"
+                android:textAlignment="center"/>
 
             <EditText
                 android:id="@+id/etusername"
-                android:layout_width="375dp"
-                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/tvpassword"
-                android:layout_width="375dp"
-                android:layout_height="40dp"
-                android:text="       Enter your Password" />
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="Enter your Password"
+                android:textAlignment="center"/>
 
             <EditText
                 android:id="@+id/etpassword"
-                android:layout_width="347dp"
-                android:layout_height="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
                 android:ems="10"
                 android:inputType="textPassword" />
 
             <Button
-                android:id="@+id/btn_submit_sigin"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Sign in" />
+                android:layout_height="65dp"
+                android:id="@+id/btn_submit_signin"
+                android:text="Sign in"/>
 
             <Button
                 android:id="@+id/bsignin"
-                android:layout_width="237dp"
-                android:layout_height="50dp"
-                android:text="Signup" />
-
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="New user?Sign up here." />
 
         </LinearLayout>
     </ScrollView>
