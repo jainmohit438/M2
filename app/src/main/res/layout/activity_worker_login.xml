@@ -19,7 +19,6 @@
                 android:id="@+id/etnumber"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_marginTop="50dp"
                 android:ems="10"
                 android:hint="Enter mobile number"
                 android:inputType="phone"
@@ -28,7 +27,7 @@
             <Button
                 android:id="@+id/btnget_otp"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="65dp"
                 android:layout_marginTop="50dp"
                 android:text="Get otp" />
 
@@ -36,25 +35,17 @@
                 android:id="@+id/etotp"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="35dp"
                 android:ems="10"
                 android:hint="Enter otp received"
-                android:inputType="number" />
+                android:inputType="numberPassword" />
 
             <Button
                 android:id="@+id/btnverify"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="65dp"
                 android:layout_marginTop="50dp"
                 android:text="Verify otp" />
-
-            <Button
-                android:id="@+id/btn_next"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="50dp"
-                android:text="Button"
-                app:layout_constraintVertical_bias="1.0" />
 
         </LinearLayout>
 

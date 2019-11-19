@@ -38,9 +38,11 @@
                 android:text="       Enter your Password" />
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:id="@+id/etpassword"/>
+                android:id="@+id/etpassword"
+                android:layout_width="347dp"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/btn_submit_sigin"

@@ -2,15 +2,16 @@ package com.example.opt_verification;
 
 public class worker_details {
 
-    String name , aadhar , work ;
+    String name , aadhar , work , number ;
 
     public worker_details() {
     }
 
-    public worker_details(String name, String aadhar, String work) {
+    public worker_details(String name, String aadhar, String work, String number) {
         this.name = name;
         this.aadhar = aadhar;
         this.work = work;
+        this.number = number;
     }
 
     public String getName() {
@@ -19,6 +20,14 @@ public class worker_details {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getAadhar() {

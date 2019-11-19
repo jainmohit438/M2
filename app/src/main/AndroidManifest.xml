@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".admin_master"></activity>
+        <activity android:name=".worker_all_display"></activity>
+        <activity android:name=".admin_master" />
         <activity android:name=".admin_display" />
         <activity android:name=".admin_verify" />
         <activity android:name=".add_admin" />

@@ -17,13 +17,19 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
 public class worker_login extends AppCompatActivity {
 
+    private String NUMBER = "num" ;
 
-    Button btnverify , btnotp , btnnext ;
+    Button btnverify , btnotp ;
 
     EditText etnumber , etotp;
 
@@ -31,6 +37,7 @@ public class worker_login extends AppCompatActivity {
 
     FirebaseAuth fbauth ;// = FirebaseAuth.getInstance() ;
 
+    DatabaseReference dbworker ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +48,19 @@ public class worker_login extends AppCompatActivity {
 
         btnotp = findViewById(R.id.btnget_otp) ;
         btnverify = findViewById(R.id.btnverify) ;
-        btnnext = findViewById(R.id.btn_next) ;
 
         etnumber = findViewById(R.id.etnumber) ;
         etotp = findViewById(R.id.etotp) ;
 
         String sent_code ;
 
+        dbworker = FirebaseDatabase.getInstance().getReference("workers") ;
+
         //fbauth = FirebaseAuth.getInstance() ;
 
         btnotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText( getApplicationContext() , "Button clicked. " , Toast.LENGTH_SHORT).show() ;
                 sendotp();
             }
         });
@@ -63,23 +70,14 @@ public class worker_login extends AppCompatActivity {
             public void onClick(View view) {
 
                 verifycode();
-            }
-        });
-
-        btnnext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent( getApplicationContext() , worker_registration.class ) ;
-                startActivity(intent) ;
-
+                //finish();
             }
         });
 
     }
 
     private void sendotp() {
-        String num = etnumber.getText().toString() ;
+        String num = "+91" + etnumber.getText().toString() ;
 
         if ( num.isEmpty() ){
             etnumber.setError( " Entering phone number is mandatory. " );
@@ -120,6 +118,7 @@ public class worker_login extends AppCompatActivity {
             sent_code = s ;
 
         }
+
     } ;
 
     private void verifycode() {
@@ -135,6 +134,7 @@ public class worker_login extends AppCompatActivity {
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(sent_code, code) ;
 
             signInWithPhoneAuthCredential(credential) ;
+
         }
         catch (Exception e){
             Toast.makeText(getApplicationContext() , "wrong code." , Toast.LENGTH_SHORT).show();
@@ -149,6 +149,36 @@ public class worker_login extends AppCompatActivity {
                         if (task.isSuccessful()) { // if verifiaction is successful
 
                             Toast.makeText( getApplicationContext() , "Verification approved." , Toast.LENGTH_LONG).show() ;
+
+                            etnumber.setText("");
+                            etotp.setText("");
+
+                            dbworker.child("number").addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.exists()){
+
+                                        Intent intent = new Intent(getApplicationContext() , worker_all_display.class) ;
+                                        startActivity(intent) ;
+
+                                    }
+                                    else {
+
+                                        Intent intent = new Intent(getApplicationContext() , worker_registration.class) ;
+                                        //intent.putExtra(NUMBER , etnumber.getText().toString()) ;
+                                        Bundle b = new Bundle() ;
+                                        b.putString("num" , etnumber.getText().toString()) ;
+                                        intent.putExtras(b) ;
+                                        startActivity(intent) ;
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
 
                         } else { // if verification fails
 
