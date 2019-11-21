@@ -13,6 +13,9 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class customer_registration extends AppCompatActivity {
 
 
@@ -35,6 +38,7 @@ public class customer_registration extends AppCompatActivity {
         etpassword =(EditText) findViewById(R.id.etpassword);
         etphone= (EditText) findViewById(R.id.etphone);
         btn_register = findViewById(R.id.bsignup) ;
+
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +71,7 @@ public class customer_registration extends AppCompatActivity {
 
             String id= databasecustomer.push().getKey();
 
-            customer_details cust = new customer_details(id,name,username,email,password,phone);
+            customer_details cust = new customer_details(name,username,email,password,phone);
 
             databasecustomer.child(id).setValue(cust);
 

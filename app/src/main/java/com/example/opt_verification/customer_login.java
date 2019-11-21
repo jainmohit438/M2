@@ -21,6 +21,7 @@ public class customer_login extends AppCompatActivity {
         setContentView(R.layout.activity_customer_login);
 
         btn_sign_up = findViewById(R.id.bsignin) ;
+        btn_submit_sigin = findViewById(R.id.btn_submit_sigin) ;
 
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,8 +33,13 @@ public class customer_login extends AppCompatActivity {
             }
         });
 
-
-
+        btn_submit_sigin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getApplicationContext() , customer_options.class);
+                startActivity(intent) ;
+            }
+        });
 
     }
 }

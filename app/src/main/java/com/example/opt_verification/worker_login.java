@@ -158,11 +158,15 @@ public class worker_login extends AppCompatActivity {
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     if (dataSnapshot.exists()){
 
+                                        Toast.makeText( getApplicationContext() , "Already exists." , Toast.LENGTH_SHORT).show() ;
+
                                         Intent intent = new Intent(getApplicationContext() , worker_all_display.class) ;
                                         startActivity(intent) ;
 
                                     }
                                     else {
+
+                                        Toast.makeText( getApplicationContext() , " New user." , Toast.LENGTH_SHORT).show() ;
 
                                         Intent intent = new Intent(getApplicationContext() , worker_registration.class) ;
                                         //intent.putExtra(NUMBER , etnumber.getText().toString()) ;

@@ -35,6 +35,12 @@
                 android:id="@+id/et_num"
                 android:hint="Enter your number here"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginBottom="25dp"
+                android:id="@+id/tv_number" />
+
             <EditText
                 android:id="@+id/et_aadhar"
                 android:layout_width="match_parent"
@@ -56,16 +62,9 @@
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="434dp" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:id="@+id/btn_verify_otp"
-                android:hint="Enter otp here"
-                android:layout_marginBottom="25dp"/>
-
             <Button
                 android:id="@+id/btn_submit"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:layout_marginBottom="25dp"

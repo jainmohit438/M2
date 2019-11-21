@@ -10,18 +10,20 @@
 
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/lv_admin_display">
-
-            </ListView>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:id="@+id/btn_admin_master"
-                android:text="Login using master admin and password."/>
+                android:layout_height="350dp"
+                android:id="@+id/lv_admin_display"
+                android:layout_above="@+id/btn_admin_master"/>
 
         </LinearLayout>
+
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_admin_master"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:text="Login using master admin and password." />
+
+</RelativeLayout>

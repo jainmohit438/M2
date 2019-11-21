@@ -3,6 +3,7 @@ package com.example.opt_verification;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -73,6 +74,13 @@ public class add_service extends AppCompatActivity {
             dbservice.child(id).setValue(s) ;
 
             Toast.makeText( getApplicationContext() , "Service added . " , Toast.LENGTH_SHORT).show() ;
+
+            et_name.setText("") ;
+            et_sal.setText("") ;
+
+            finish();
+            Intent intent = new Intent( getApplicationContext() , admin_options.class ) ;
+            startActivity(intent) ;
 
         }
 

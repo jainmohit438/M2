@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".worker_all_display"></activity>
+        <activity android:name=".worker_all_display" />
         <activity android:name=".admin_master" />
         <activity android:name=".admin_display" />
         <activity android:name=".admin_verify" />
@@ -24,7 +24,8 @@
         <activity android:name=".customer_registration" />
         <activity android:name=".customer_login" />
         <activity android:name=".worker_registration" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
