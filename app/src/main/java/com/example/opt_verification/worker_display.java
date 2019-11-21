@@ -29,7 +29,7 @@ public class worker_display extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_display);
 
-        lvdisplay = findViewById(R.id.lv_worker_display) ;
+        lvdisplay = findViewById(R.id.lvd2) ;
 
         workerlist = new ArrayList<>() ;
 

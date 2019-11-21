@@ -1,63 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".customer_login">
 
-
-    <ScrollView
+    <EditText
+        android:id="@+id/etusername"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-
-            <TextView
-                android:id="@+id/tvuserid"
-                android:layout_width="375dp"
-                android:layout_height="40dp"
-                android:text="        Enter Your UserName" />
-
-            <EditText
-                android:id="@+id/etusername"
-                android:layout_width="375dp"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <TextView
-                android:id="@+id/tvpassword"
-                android:layout_width="375dp"
-                android:layout_height="40dp"
-                android:text="       Enter your Password" />
-
-            <EditText
-                android:id="@+id/etpassword"
-                android:layout_width="347dp"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:inputType="textPassword" />
-
-            <Button
-                android:id="@+id/btn_submit_sigin"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Sign in" />
-
-            <Button
-                android:id="@+id/bsignin"
-                android:layout_width="237dp"
-                android:layout_height="50dp"
-                android:text="Signup" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Enter Your Username "
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="246dp"
+        android:layout_below="@+id/img"/>
 
 
-        </LinearLayout>
-    </ScrollView>
+    <EditText
+        android:id="@+id/etpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Enter Your Password"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="320dp"
+        android:layout_below="@+id/etusername"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_submit_sigin"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/etpassword"
+        android:layout_marginTop="25dp"
+        android:background="@color/airforceblue"
+        android:text="sign in "
+        android:textColor="@color/amber"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="391dp" />
+
+    <Button
+        android:id="@+id/bsignin"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/forgot_password"
+        android:background="@color/airforceblue"
+        android:text="Signup"
+        android:textColor="@color/amber"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="527dp" />
+
+    <Button
+        android:id="@+id/forgot_password"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/btn_submit_sigin"
+        android:background="@color/airforceblue"
+        android:text="Forgot my Password"
+        android:textSize="20dp"
+        android:textColor="@color/amber"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="460dp" />
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="383dp"
+        android:layout_height="203dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/sign_in_logo"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="5dp" />
+
+
+</RelativeLayout>

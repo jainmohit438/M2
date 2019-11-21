@@ -1,39 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-        <ScrollView
+
+        <Button
+            android:id="@+id/btn_customer_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/imgmain"
+            android:background="@color/airforceblue"
+            android:text="Customers Click Here"
+            android:textColor="@color/amber"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="361dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+        <ImageView
+            android:id="@+id/imgmain"
+            android:layout_width="404dp"
+            android:layout_height="317dp"
+            android:src="@drawable/mainpage" />
 
-                        <Button
-                            android:id="@+id/btn_customer_login"
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:text="Customers Click Here" />
+        <Button
+            android:id="@+id/btn_worker_login"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/btn_customer_login"
+            android:background="@color/airforceblue"
+            android:text="Professionals Click here"
+            android:textColor="@color/amber"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="437dp" />
 
-                        <Button
-                            android:id="@+id/btn_worker_login"
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:text="Professionals Click here" />
+        <Button
+            android:id="@+id/btn_admin"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/btn_worker_login"
+            android:text="ADMIN LOGIN"
+            android:background="@color/airforceblue"
+            android:textColor="@color/amber"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="520dp" />
 
-                        <Button
-                            android:id="@+id/btn_admin"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="ADMIN LOGIN" />
 
-                </LinearLayout>
-
-        </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

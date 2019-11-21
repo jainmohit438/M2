@@ -6,75 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".customer_options">
 
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lv_services_display">
+        android:id="@+id/lv1"></ListView>
 
-    </ListView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnhouse"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="House cleaning" />
-
-            <Button
-                android:id="@+id/btnelec"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="Electrician" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnplumber"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="Plumber" />
-
-            <Button
-                android:id="@+id/btncarpenter"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="Carpenter" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btncomp"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="Computer/Mobile repair" />
-
-            <Button
-                android:id="@+id/btnpest"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:text="Pest Control" />
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

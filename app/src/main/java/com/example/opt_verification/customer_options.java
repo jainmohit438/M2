@@ -28,7 +28,7 @@ public class customer_options extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_options);
 
-        lvdisplay = findViewById(R.id.lv_services_display) ;
+        lvdisplay = findViewById(R.id.lv1) ;
 
         servicelist = new ArrayList<>() ;
 

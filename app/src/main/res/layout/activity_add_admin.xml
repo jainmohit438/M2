@@ -1,46 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".add_admin">
 
-    <ScrollView
+
+    <EditText
+        android:id="@+id/et_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/imgadd_admin"
+        android:hint="Enter name of new admin."
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="218dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <EditText
+        android:id="@+id/et_number"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/et_name"
+        android:hint="Enter mobile number here."
+        android:inputType="number"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="304dp" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:id="@+id/et_name"
-                android:hint="Enter name of new admin."/>
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Enter password here."
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/et_number"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="387dp" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:id="@+id/et_number"
-                android:hint="Enter mobile number here."
-                android:inputType="number"/>
+    <ImageView
+        android:id="@+id/imgadd_admin"
+        android:layout_width="409dp"
+        android:layout_height="201dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/admin1"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="2dp" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:id="@+id/et_password"
-                android:hint="Enter password here." />
+    <Button
+        android:id="@+id/btn_create_new_admin"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Create"
+        android:textSize="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/et_password"
+        android:background="@color/airforceblue"
+        android:textColor="@color/colorPrimary"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="513dp" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:id="@+id/btn_create_new_admin"
-                android:text="Create" />
 
-        </LinearLayout>
-    </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
