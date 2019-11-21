@@ -17,7 +17,7 @@
 
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
                 android:id="@+id/lv_admin_display"
                 android:layout_above="@+id/btn_admin_master"/>
 

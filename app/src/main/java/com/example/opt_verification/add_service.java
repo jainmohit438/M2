@@ -3,6 +3,7 @@ package com.example.opt_verification;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,8 +26,6 @@ public class add_service extends AppCompatActivity {
 
     Button btn_add ;
 
-    ListView lvdisplay ;
-
     List<services_detail> servicelist ;
 
     DatabaseReference dbservice ;
@@ -41,8 +40,6 @@ public class add_service extends AppCompatActivity {
 
         btn_add = findViewById(R.id.btn_add_serv) ;
 
-        lvdisplay = findViewById(R.id.lv_ser) ;
-
         servicelist = new ArrayList<>() ;
 
         dbservice = FirebaseDatabase.getInstance().getReference("services") ;
@@ -52,36 +49,6 @@ public class add_service extends AppCompatActivity {
             public void onClick(View view) {
 
                 add_services();
-
-            }
-        });
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        dbservice.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                servicelist.clear() ;
-
-                for (DataSnapshot servicesnap : dataSnapshot.getChildren()){
-                    services_detail s2 = servicesnap.getValue(services_detail.class) ;
-                    servicelist.add(s2) ;
-                }
-
-                services_list adapter = new services_list( add_service.this , servicelist ) ;
-
-                lvdisplay.setAdapter(adapter) ;
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -107,6 +74,13 @@ public class add_service extends AppCompatActivity {
             dbservice.child(id).setValue(s) ;
 
             Toast.makeText( getApplicationContext() , "Service added . " , Toast.LENGTH_SHORT).show() ;
+
+            et_name.setText("") ;
+            et_sal.setText("") ;
+
+            finish();
+            Intent intent = new Intent( getApplicationContext() , admin_options.class ) ;
+            startActivity(intent) ;
 
         }
 

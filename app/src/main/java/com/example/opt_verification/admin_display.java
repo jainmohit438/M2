@@ -50,7 +50,7 @@ public class admin_display extends AppCompatActivity {
             public void onClick(View view) {
 
                 //Intent intent = new Intent(getApplicationContext() , admin_master.class) ;
-                Intent intent = new Intent(getApplicationContext() , admin_options.class) ;
+                Intent intent = new Intent(getApplicationContext() , admin_master.class) ;
                 startActivity(intent);
 
             }

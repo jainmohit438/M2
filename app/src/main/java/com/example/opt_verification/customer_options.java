@@ -41,7 +41,7 @@ public class customer_options extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_options);
 
-        lvdisplay = findViewById(R.id.lv1) ;
+        lvdisplay = findViewById(R.id.lv_services_display) ;
 
         dat = findViewById(R.id.tv_appointment_date) ;
 

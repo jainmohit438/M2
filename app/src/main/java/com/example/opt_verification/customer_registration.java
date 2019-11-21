@@ -71,7 +71,7 @@ public class customer_registration extends AppCompatActivity {
 
             String id= databasecustomer.push().getKey();
 
-            customer_details cust = new customer_details(id,name,username,email,password,phone);
+            customer_details cust = new customer_details(name,username,email,password,phone);
 
             databasecustomer.child(id).setValue(cust);
 
