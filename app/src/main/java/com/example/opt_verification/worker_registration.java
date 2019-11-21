@@ -24,9 +24,11 @@ import java.util.List;
 
 public class worker_registration extends AppCompatActivity {
 
-    Button btnsubmit  ;
+    Button btnsubmit ;
 
     EditText etname , etaadhar , etnum ;
+
+    TextView tvnum ;
 
     Spinner spnwork ;
 
@@ -43,13 +45,15 @@ public class worker_registration extends AppCompatActivity {
         etname = findViewById(R.id.et_name) ;
         etnum = findViewById(R.id.et_num) ;
 
+        tvnum = findViewById(R.id.tv_number) ;
+
         spnwork = findViewById(R.id.spn_work) ;
 
         dbWorker = FirebaseDatabase.getInstance().getReference("workers") ;
 
         Bundle b = getIntent().getExtras() ;
 
-        etnum.setText(b.getString("num")) ;
+        tvnum.setText(b.getString("num")) ;
 
         btnsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,11 +87,14 @@ public class worker_registration extends AppCompatActivity {
         }
         else {
 
-            worker_details w = new worker_details( name , aadhar , work , num ) ;
+            worker_details w = new worker_details( name , aadhar , work , num  ) ;
 
             dbWorker.child(num).setValue(w) ;
 
-            Toast.makeText( getApplicationContext() , "Worker added . " , Toast.LENGTH_SHORT).show() ;
+            Toast.makeText( getApplicationContext() , "Registration successful. . " , Toast.LENGTH_SHORT).show() ;
+
+            Intent intent = new Intent( getApplicationContext() , worker_all_display.class) ;
+            startActivity(intent) ;
 
         }
 

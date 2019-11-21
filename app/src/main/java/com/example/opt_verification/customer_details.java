@@ -1,29 +1,27 @@
 package com.example.opt_verification;
 
+import java.util.List;
+
 public class customer_details {
 
-    String cid;
     String cname;
     String cusername;
     String cemail;
     String cpassword;
     String cphone;
+    List<appointment> a;
 
     public customer_details() {
+        this.a = null ;
     }
 
-    public customer_details(String cid,String cname,String cusername, String cemail, String cpassword, String cphone) {
-        this.cid = cid;
+    public customer_details(String cname, String cusername, String cemail, String cpassword, String cphone) {
         this.cname = cname;
-        this.cusername=cusername;
+        this.cusername = cusername;
         this.cemail = cemail;
         this.cpassword = cpassword;
         this.cphone = cphone;
     }
-
-    public String getCid () { return cid; }
-
-    public void setCid(String cid) {this.cid = cid; }
 
     public String getCname() {
         return cname;
@@ -61,4 +59,11 @@ public class customer_details {
         this.cphone = cphone;
     }
 
+    public List<appointment> getA() {
+        return a;
+    }
+
+    public void setA(List<appointment> a) {
+        this.a = a;
+    }
 }

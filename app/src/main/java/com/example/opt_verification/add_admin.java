@@ -2,6 +2,7 @@ package com.example.opt_verification;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +29,7 @@ public class add_admin extends AppCompatActivity {
         et_number = findViewById(R.id.et_number) ;
         et_password = findViewById(R.id.et_password) ;
 
-        btn_add = findViewById(R.id.btn_add_admin) ;
+        btn_add = findViewById(R.id.btn_create_new_admin) ;
 
         dbadmin = FirebaseDatabase.getInstance().getReference("admin") ;
 
@@ -55,13 +56,19 @@ public class add_admin extends AppCompatActivity {
         }
         else {
 
-            String id = dbadmin.push().getKey() ;
-
             admin_details a = new admin_details(name , num , pass) ;
 
-            dbadmin.child(id).setValue(a) ;
+            dbadmin.child(num).setValue(a) ;
 
             Toast.makeText(getApplicationContext() , "Admin added successfully" , Toast.LENGTH_SHORT).show() ;
+
+            et_name.setText("") ;
+            et_password.setText("") ;
+            et_number.setText("") ;
+
+            finish() ;
+            Intent intent = new Intent( getApplicationContext() , admin_options.class) ;
+            startActivity(intent) ;
 
         }
 

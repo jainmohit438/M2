@@ -27,10 +27,12 @@ public class services_list extends ArrayAdapter<services_detail> {
         View lv_item = inf.inflate(R.layout.services_list_layout , null , true) ;
 
         TextView tv_service_name = lv_item.findViewById(R.id.tv_service_name) ;
+        TextView tv_service_salary = lv_item.findViewById(R.id.tv_service_salary) ;
 
         services_detail s = sl.get(pos) ;
 
         tv_service_name.setText(s.getName()) ;
+        tv_service_salary.setText(s.getSalary()) ;
 
         return lv_item ;
     }
