@@ -132,7 +132,7 @@ public class customer_registration extends AppCompatActivity {
         String password =etpassword.getText().toString().trim();
         String phone =etphone.getText().toString().trim();
 
-        if(validationname()  || validateEmail() ||  validationusername() ||  validatemobile() ){
+        if(validationname()  || validateEmail() ||validatePassword() ||  validationusername() ||  validatemobile() ){
 
             Toast.makeText(this,"Please Fill Your Entries correctly",Toast.LENGTH_LONG).show();
 
