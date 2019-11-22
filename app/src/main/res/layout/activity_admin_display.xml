@@ -21,6 +21,9 @@
         android:id="@+id/btn_admin_master"
         android:layout_width="match_parent"
         android:layout_height="65dp"
+        android:background="@color/airforceblue"
+        android:textColor="@color/amber"
+        android:textSize="20dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"
         android:text="Login using master admin and password." />
