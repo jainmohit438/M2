@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,10 +16,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class customer_registration extends AppCompatActivity {
 
-
+    private static final Pattern PASSWORD_PATTERN =
+            Pattern.compile("^(?=.*\\d)(?=.*[A-Z])([@$%&#])[0-9a-zA-Z]{4,}$");
     EditText etname ,etusername, etemail , etpassword , etphone;
 
     Button btn_register , btn_options ;
@@ -46,12 +49,80 @@ public class customer_registration extends AppCompatActivity {
 
                 addcustomer() ;
 
-                Intent intent = new Intent(getApplicationContext() , customer_options.class) ;
-                startActivity(intent);
-
             }
         });
 
+    }
+
+    private boolean validatePassword(){
+        String passwordinput =etpassword.getText().toString().trim();
+
+        if (passwordinput.isEmpty()) {
+            Toast.makeText(this,"Field can not be empty",Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        else if (!PASSWORD_PATTERN.matcher(passwordinput).matches()) {
+            Toast.makeText(this,"Password too weak",Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+    private boolean validatemobile() {
+        String mobileinput = etphone.getText().toString().trim();
+        String mobilepattern = "[0-9]{10}";
+
+        if (!mobileinput.matches(mobilepattern)) {
+            Toast.makeText(this,"Enter correct mobile no",Toast.LENGTH_LONG).show();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private boolean validationusername() {
+        String usernameinput=etusername.getText().toString().trim();
+        String upattern = "^[a-z0-9_-]{5,15}$";
+
+        if (!usernameinput.matches(upattern)) {
+            Toast.makeText(this,"Enter a valid Username",Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+    private boolean validationname() {
+        String nameinput =etname.getText().toString().trim();
+        String namepattern = "^[a-z0-9_-]{5,15}$";
+
+        if (!nameinput.matches(namepattern)) {
+            Toast.makeText(this,"Enter a valid name",Toast.LENGTH_LONG).show();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    private boolean validateEmail() {
+        String emailinput =etemail.getText().toString().trim();
+
+        if (emailinput.isEmpty()) {
+            Toast.makeText(this,"Field Can not be Empty",Toast.LENGTH_LONG).show();
+            return true;
+        }
+        else if (!Patterns.EMAIL_ADDRESS.matcher(emailinput).matches()) {
+            Toast.makeText(this,"Please enter a valid Email",Toast.LENGTH_LONG).show();
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     private void addcustomer(){
@@ -61,7 +132,7 @@ public class customer_registration extends AppCompatActivity {
         String password =etpassword.getText().toString().trim();
         String phone =etphone.getText().toString().trim();
 
-        if(TextUtils.isEmpty(name)  || TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(phone) ){
+        if(validationname()  || validateEmail() ||  validationusername() ||  validatemobile() ){
 
             Toast.makeText(this,"Please Fill Your Entries correctly",Toast.LENGTH_LONG).show();
 
