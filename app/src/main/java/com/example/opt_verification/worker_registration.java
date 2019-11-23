@@ -66,6 +66,33 @@ public class worker_registration extends AppCompatActivity {
 
     }
 
+    private boolean validatewname() {
+        String wnameinput=etname.getText().toString().trim();
+        String wnpattern = "^[a-z0-9_-]{5,15}$";
+
+        if (!wnameinput.matches(wnpattern)) {
+            Toast.makeText(this,"Enter valid name",Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    private boolean validatewphone(){
+        String wphoneinput=etnum.getText().toString().trim();
+        String mobilepattern = "[0-9]{10}";
+
+        if (!wphoneinput.matches(mobilepattern)) {
+            Toast.makeText(this,"Enter valid phone no",Toast.LENGTH_LONG).show();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     private void addWorker(){
 
         String name = etname.getText().toString().trim() ;
@@ -73,7 +100,7 @@ public class worker_registration extends AppCompatActivity {
         String work = spnwork.getSelectedItem().toString() ;
         String num = etnum.getText().toString().trim() ;
 
-        if( name.isEmpty() || aadhar.isEmpty() ){
+        if( aadhar.isEmpty() || validatewname() || validatewphone() ){
 
             Toast.makeText( getApplicationContext() , "Please enter details properly . " , Toast.LENGTH_SHORT).show() ;
 

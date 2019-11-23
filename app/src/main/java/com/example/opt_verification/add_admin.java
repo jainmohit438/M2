@@ -11,8 +11,12 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import java.util.regex.Pattern;
 
 public class add_admin extends AppCompatActivity {
+
+    private static final Pattern PASSWORD_PATTERN =
+            Pattern.compile("^(?=.*\\d)(?=.*[A-Z])([@$%&#])[0-9a-zA-Z]{4,}$");
 
     EditText et_name , et_number , et_password ;
 
@@ -43,13 +47,61 @@ public class add_admin extends AppCompatActivity {
 
     }
 
+
+    private boolean validateaname() {
+        String anameinput =et_name.getText().toString().trim();
+        String apattern = "^[a-z0-9_-]{5,15}$";
+
+        if (!anameinput.matches(apattern)) {
+            Toast.makeText(this,"Enter a valid name",Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    private boolean validateamobile() {
+        String amobileinput =et_number.getText().toString().trim();
+        String mobileapattern = "[0-9]{10}";
+        if (!amobileinput.matches(mobileapattern)) {
+            Toast.makeText(this,"Enter a valid mobile no",Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        else {
+            return true;
+        }
+
+
+    }
+
+    private boolean validateapassword () {
+        String apasswordinput =et_password.getText().toString().trim();
+
+        if (apasswordinput.isEmpty()) {
+            Toast.makeText(this,"Password can not be empty",Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        else if (!PASSWORD_PATTERN.matcher(apasswordinput).matches()) {
+            Toast.makeText(this,"Password too weak",Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
     private void addAdmin(){
 
         String name = et_name.getText().toString().trim() ;
         String num = et_number.getText().toString().trim() ;
         String pass = et_password.getText().toString().trim() ;
 
-        if (name.isEmpty() || num.isEmpty()|| pass.isEmpty()){
+        if (validateaname() || validateamobile()|| validateapassword()){
 
             Toast.makeText(getApplicationContext() , "Please enter details properly." , Toast.LENGTH_SHORT).show();
 
