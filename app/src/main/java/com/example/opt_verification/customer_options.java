@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
@@ -36,54 +37,34 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class customer_options extends AppCompatActivity implements
-        DatePickerDialog.OnDateSetListener , TimePickerDialog.OnTimeSetListener {
+public class customer_options extends AppCompatActivity {
 
-    ListView lvdisplay ;
-
-    List<services_detail> servicelist ;
-
-    DatabaseReference dbservice , dbpappointment , dbcustomer ;
+    DatabaseReference dbcustomer ;
 
     TextView tv_name ;
 
-    Date date;
-
-    private DatePickerDialog.OnDateSetListener date_input ;
-    private TimePickerDialog.OnTimeSetListener time_input ;
-
-    DatePickerDialog dp ;
-    TimePickerDialog tp ;
-
-    Date current_date = new Date() ;
-
-    Integer year_final , month_final , date_final , hour_final , minute_final ;
-
     FirebaseAuth fbauth ;
 
-    Button btn_logout ;
+    Button btn_logout , btn_new , btn_pending , btn_confirm ;
 
     ProgressDialog progressDialog ;
 
-    String customer_name ;
-    services_detail s ;
+    public static final String customer_name = "name" ;
+    String c_name ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_options);
 
-        lvdisplay = findViewById(R.id.lv_services_display) ;
-
-        servicelist = new ArrayList<>() ;
-
         dbcustomer    = FirebaseDatabase.getInstance().getReference("customer")    ;
-        dbservice     = FirebaseDatabase.getInstance().getReference("services")    ;
-        dbpappointment = FirebaseDatabase.getInstance().getReference("pappointment") ;
 
         tv_name = findViewById(R.id.tv_cust_name) ;
 
         btn_logout = findViewById(R.id.btn_customer_logout) ;
+        btn_new = findViewById(R.id.co_btn_new) ;
+        btn_pending = findViewById(R.id.co_btn_pending) ;
+        btn_confirm = findViewById(R.id.co_btn_confirmed) ;
 
         fbauth = FirebaseAuth.getInstance() ;
 
@@ -94,6 +75,33 @@ public class customer_options extends AppCompatActivity implements
             Intent intent = new Intent( getApplicationContext() , customer_login.class) ;
             startActivity(intent) ;
         }
+
+        btn_new.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getApplicationContext() , customer_new_appointment.class) ;
+                intent.putExtra(customer_name , c_name ) ;
+                startActivity(intent);
+            }
+        });
+
+        btn_pending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getApplicationContext() , customer_pending_appointment.class) ;
+                intent.putExtra(customer_name , c_name) ;
+                startActivity(intent);
+            }
+        });
+
+        btn_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getApplicationContext() , customer_confirm_appointment.class) ;
+                intent.putExtra(customer_name , c_name) ;
+                startActivity(intent) ;
+            }
+        });
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,26 +117,6 @@ public class customer_options extends AppCompatActivity implements
 
             }
         });
-
-        lvdisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                s = servicelist.get(i) ;
-
-                Calendar cal = Calendar.getInstance() ;
-
-                int d1 = cal.get(Calendar.DAY_OF_MONTH) ;
-                int month = cal.get(Calendar.MONTH) ;
-                int year = cal.get(Calendar.YEAR) ;
-
-                dp = new DatePickerDialog( customer_options.this , customer_options.this
-                        , year , month , d1 ) ;
-
-                dp.show() ;
-
-            }
-        }) ;
     }
 
     @Override
@@ -161,37 +149,13 @@ public class customer_options extends AppCompatActivity implements
     protected void onStart() {
         super.onStart();
 
-        dbservice.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                servicelist.clear() ;
-
-                for (DataSnapshot servicesnap : dataSnapshot.getChildren()){
-                    services_detail s2 = servicesnap.getValue(services_detail.class) ;
-                    servicelist.add(s2) ;
-                }
-
-                services_list adapter = new services_list( customer_options.this , servicelist ) ;
-
-                lvdisplay.setAdapter(adapter) ;
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
         dbcustomer.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 FirebaseUser user2 = fbauth.getCurrentUser() ;
-                customer_name = dataSnapshot.child(user2.getUid()).child("cusername").getValue().toString();
+                c_name = dataSnapshot.child(user2.getUid()).child("cname").getValue().toString();
 
-                tv_name.setText(customer_name);
+                tv_name.setText("Welcome back " + c_name + ".");
             }
 
             @Override
@@ -199,53 +163,5 @@ public class customer_options extends AppCompatActivity implements
 
             }
         }) ;
-
-
-
-    }
-
-    @Override
-    public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-
-        year_final = y - 1900;
-        month_final = m ;
-        date_final = d ;
-
-        Calendar c = Calendar.getInstance() ;
-        int hour = c.get(Calendar.HOUR_OF_DAY) , minute = c.get(Calendar.MINUTE) ;
-
-        tp = new TimePickerDialog( customer_options.this , customer_options.this
-                                                    , hour , minute , DateFormat.is24HourFormat(this)) ;
-
-        tp.show() ;
-
-    }
-
-    @Override
-    public void onTimeSet(TimePicker timePicker, int h, int m) {
-
-        hour_final = h ;
-        minute_final = m ;
-
-        date = new Date(year_final , month_final , date_final , hour_final , minute_final) ;
-
-        set_appointment() ;
-
-    }
-
-    private void set_appointment(){
-
-        if (date.after(current_date)){
-            String id = dbpappointment.child(s.getName()).push().getKey() ;
-            pending_appointment pa = new pending_appointment ( id ,customer_name , date ) ;
-            dbpappointment.child(s.getName()).child(id).setValue(pa) ;
-
-            Toast.makeText(getApplicationContext() , "Appointment set." , Toast.LENGTH_SHORT).show() ;
-
-        }
-        else{
-            Toast.makeText( getApplicationContext() , "Please enter a valid date." , Toast.LENGTH_SHORT).show() ;
-            dp.show();
-        }
     }
 }

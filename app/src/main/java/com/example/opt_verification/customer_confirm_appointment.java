@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,55 +15,46 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class worker_display extends AppCompatActivity {
+public class customer_confirm_appointment extends AppCompatActivity {
 
-    ListView lvdisplay ;
-
-    List<worker_details> workerlist ;
-
-    DatabaseReference dbWorker ;
+    DatabaseReference dbca ;
+    List<appointment> cl ;
+    ListView lv ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_worker_display);
+        setContentView(R.layout.activity_customer_confirm_appointment);
 
-        lvdisplay = findViewById(R.id.lvd2) ;
-
-        workerlist = new ArrayList<>() ;
-
-        dbWorker = FirebaseDatabase.getInstance().getReference("workers") ;
-
+        String n = getIntent().getStringExtra(customer_options.customer_name) ;
+        dbca = FirebaseDatabase.getInstance().getReference("cappointment").child(n) ;
+        lv = findViewById(R.id.cca_lv) ;
+        cl = new ArrayList<>() ;
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        dbWorker.addValueEventListener(new ValueEventListener() {
-
+        dbca.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                workerlist.clear() ;
+                cl.clear() ;
 
-                for (DataSnapshot workersnap : dataSnapshot.getChildren()){
-                    //String id = workersnap.getValue() ;
-                    worker_details w2 = workersnap.getValue(worker_details.class) ;
-                    workerlist.add(w2) ;
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    appointment a = ds.getValue(appointment.class) ;
+                    cl.add(a) ;
                 }
 
-                worker_list adapter = new worker_list( worker_display.this , workerlist ) ;
-
-                lvdisplay.setAdapter(adapter) ;
-
+                customer_confirm adapter = new customer_confirm( customer_confirm_appointment.this , cl) ;
+                lv.setAdapter(adapter) ;
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
-
+        }) ;
     }
 }

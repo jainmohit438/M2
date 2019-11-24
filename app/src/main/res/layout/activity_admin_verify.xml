@@ -6,40 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".admin_verify">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:id="@+id/tv_num"
-        android:layout_below="@+id/btn_verify_admin"
-        android:layout_marginTop="25dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:id="@+id/tv_na"
-        android:layout_below="@+id/tv_num"
-        android:layout_marginTop="25dp" />
-
-    <EditText
-        android:id="@+id/et_otp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/imgadmin_verify"
-        android:hint="Enter otp received here."
-        android:inputType="number"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="243dp" />
-
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/et_otp"
-        android:hint="Enter your password here."
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="341dp" />
 
     <ImageView
         android:id="@+id/imgadmin_verify"
@@ -50,11 +16,44 @@
         tools:layout_editor_absoluteX="6dp"
         tools:layout_editor_absoluteY="4dp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:id="@+id/tv_na"
+        android:layout_below="@+id/imgadmin_verify"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:id="@+id/tv_num"
+        android:layout_below="@+id/tv_na"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <EditText
+        android:id="@+id/et_otp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_num"
+        android:hint="Enter otp received here."
+        android:inputType="number"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="243dp" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/et_otp"
+        android:hint="Enter your password here."
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="341dp" />
+
     <Button
         android:id="@+id/btn_verify_admin"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="25dp"
         android:layout_below="@+id/et_password"
         android:background="@color/airforceblue"
         android:text="Verify."

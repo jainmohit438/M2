@@ -149,8 +149,8 @@ public class worker_login extends AppCompatActivity {
 
         }
         catch (Exception e){
-            Toast.makeText(getApplicationContext() , "wrong code." , Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(getApplicationContext() , "Wrong code." , Toast.LENGTH_SHORT).show();
+            /*
             dbworker.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -185,7 +185,7 @@ public class worker_login extends AppCompatActivity {
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
-            });
+            });*/
 
         }
     }

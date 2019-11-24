@@ -6,17 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".admin_display">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:id="@+id/ad_tv"
+        android:text="EXISTING ADMINS :- "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="25dp"/>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:id="@+id/lv_admin_display"/>
-
+        android:layout_height="350dp"
+        android:id="@+id/ad_scv"
+        android:layout_below="@+id/ad_tv"
+        android:layout_above="@+id/btn_admin_master"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="25dp">
 
     </ScrollView>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:id="@+id/lv_admin_display"
+        android:layout_below="@+id/ad_tv"
+        android:layout_above="@+id/btn_admin_master"
+        android:layout_marginBottom="25dp"/>
+
     <Button
         android:id="@+id/btn_admin_master"
         android:layout_width="match_parent"

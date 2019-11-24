@@ -20,7 +20,7 @@ import com.google.firebase.database.Query;
 
 public class customer_login extends AppCompatActivity {
 
-    Button btn_sign_up , btn_submit_sigin ;
+    Button btn_sign_up , btn_submit_sigin , btnnext ;
 
     EditText etusername , etpswd ;
 
@@ -35,6 +35,7 @@ public class customer_login extends AppCompatActivity {
 
         btn_sign_up = findViewById(R.id.bsignin) ;
         btn_submit_sigin = findViewById(R.id.btn_submit_sigin) ;
+        btnnext  = findViewById(R.id.forgot_password) ;
 
         etusername = findViewById(R.id.etusername) ;
         etpswd = findViewById(R.id.etpassword) ;
@@ -46,6 +47,14 @@ public class customer_login extends AppCompatActivity {
             Intent intent = new Intent( getApplicationContext() , customer_options.class ) ;
             startActivity(intent) ;
         }
+
+        btnnext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getApplicationContext() , customer_options.class) ;
+                startActivity(intent) ;
+            }
+        });
 
         btn_submit_sigin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,24 +79,29 @@ public class customer_login extends AppCompatActivity {
         String username = etusername.getText().toString().trim() ;
         String pswd = etpswd.getText().toString() ;
 
+        if (username.isEmpty() || pswd.isEmpty()){
+            Toast.makeText( getApplicationContext() , "Please enter details properly." , Toast.LENGTH_SHORT).show() ;
+        }
+
         //progressDialog.setMessage("Logging in.....please wait!!");
         //progressDialog.show() ;
+        else {
+            fbauth.signInWithEmailAndPassword(username , pswd).addOnCompleteListener(customer_login.this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
 
-        fbauth.signInWithEmailAndPassword(username , pswd).addOnCompleteListener(customer_login.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
 
-                if (task.isSuccessful()){
+                        finish() ;
+                        Intent intent = new Intent( getApplicationContext() , customer_options.class ) ;
+                        startActivity(intent) ;
+                    }
+                    else{
+                        Toast.makeText( getApplicationContext() , "Email id/Password is incorrect." , Toast.LENGTH_SHORT).show() ;
+                    }
 
-                    finish() ;
-                    Intent intent = new Intent( getApplicationContext() , customer_options.class ) ;
-                    startActivity(intent) ;
                 }
-                else{
-                    Toast.makeText( getApplicationContext() , "Email id/Password is incorrect." , Toast.LENGTH_SHORT).show() ;
-                }
-
-            }
-        }) ;
+            }) ;
+        }
     }
 }

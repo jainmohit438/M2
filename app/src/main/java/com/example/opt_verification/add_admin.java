@@ -50,9 +50,9 @@ public class add_admin extends AppCompatActivity {
 
     private boolean validateaname() {
         String anameinput =et_name.getText().toString().trim();
-        String apattern = "^[a-z0-9_-]{5,15}$";
+        String apattern = "^[a-z0-9]{5,15}$";
 
-        if (!anameinput.matches(apattern)) {
+        if (anameinput.isEmpty()) {
             Toast.makeText(this,"Enter a valid name",Toast.LENGTH_LONG).show();
             return true;
         }
@@ -71,7 +71,7 @@ public class add_admin extends AppCompatActivity {
         }
 
         else {
-            return true;
+            return false;
         }
 
 
@@ -84,11 +84,11 @@ public class add_admin extends AppCompatActivity {
             Toast.makeText(this,"Password can not be empty",Toast.LENGTH_LONG).show();
             return true;
         }
-
+/*
         else if (!PASSWORD_PATTERN.matcher(apasswordinput).matches()) {
             Toast.makeText(this,"Password too weak",Toast.LENGTH_LONG).show();
             return true;
-        }
+        }*/
 
         else {
             return false;

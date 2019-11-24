@@ -75,7 +75,9 @@ public class customer_registration extends AppCompatActivity {
             Toast.makeText(this,"Please Fill Your Entries correctly",Toast.LENGTH_LONG).show();
 
         }
-
+        else if(phone.length()!= 10){
+            Toast.makeText( getApplicationContext() , "Invalid phone number." , Toast.LENGTH_SHORT).show() ;
+        }
         else {
 
             //progressBar.setVisibility(View.VISIBLE) ;

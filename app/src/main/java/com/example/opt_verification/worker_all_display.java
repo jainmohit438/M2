@@ -76,12 +76,7 @@ public class worker_all_display extends AppCompatActivity {
         }
         tv.setText("Pending appointments for " + wrk + " are :") ;
 
-        if (wrk.isEmpty()){
-            dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
-        }
-        else{
-            dbpa = FirebaseDatabase.getInstance().getReference("pappointment").child(wrk) ;
-        }
+        dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
         dbwa = FirebaseDatabase.getInstance().getReference("wappointment") ;
         dbca = FirebaseDatabase.getInstance().getReference("cappointment") ;
         dbworker = FirebaseDatabase.getInstance().getReference("workers").child(n) ;
@@ -171,10 +166,12 @@ public class worker_all_display extends AppCompatActivity {
 
                 for (DataSnapshot appsnap : dataSnapshot.getChildren()){
                     pending_appointment p = appsnap.getValue(pending_appointment.class) ;
-                    app_list.add(p) ;
+                    if (p.getWork().equals(wrk)){
+                        app_list.add(p) ;
+                    }
                 }
 
-                appointment_list adapter = new appointment_list( worker_all_display.this , app_list) ;
+                customer_pending_for_worker adapter = new customer_pending_for_worker( worker_all_display.this , app_list) ;
 
                 lv.setAdapter(adapter) ;
             }
