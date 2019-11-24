@@ -1,15 +1,22 @@
 package com.example.opt_verification;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -18,27 +25,32 @@ import java.util.List;
 
 public class customer_registration extends AppCompatActivity {
 
-
     EditText etname ,etusername, etemail , etpassword , etphone;
 
     Button btn_register , btn_options ;
 
-    DatabaseReference databasecustomer;
+    FirebaseAuth fbauth ;
+
+    DatabaseReference dbcustomer;
+
+    ProgressBar progressBar ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_registration);
 
-        databasecustomer= FirebaseDatabase.getInstance().getReference("customer");
+        fbauth = FirebaseAuth.getInstance() ;
+
+        dbcustomer = FirebaseDatabase.getInstance().getReference("customer");
 
         etname= (EditText)findViewById(R.id.etname);
         etusername = (EditText) findViewById(R.id.etusername);
         etemail= (EditText)findViewById(R.id.etemail);
         etpassword =(EditText) findViewById(R.id.etpassword);
         etphone= (EditText) findViewById(R.id.etphone);
-        btn_register = findViewById(R.id.bsignup) ;
 
+        btn_register = findViewById(R.id.bsignup) ;
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,22 +58,19 @@ public class customer_registration extends AppCompatActivity {
 
                 addcustomer() ;
 
-                Intent intent = new Intent(getApplicationContext() , customer_options.class) ;
-                startActivity(intent);
-
             }
         });
 
     }
 
     private void addcustomer(){
-        String name =etname.getText().toString().trim();
-        String username = etusername.getText().toString().trim();
-        String email =etemail.getText().toString().trim();
-        String password =etpassword.getText().toString().trim();
-        String phone =etphone.getText().toString().trim();
+        final String name     = etname.getText().toString().trim()     ;
+        final String username = etusername.getText().toString().trim() ;
+        final String email    = etemail.getText().toString().trim()    ;
+        final String pswd     = etpassword.getText().toString()        ;
+        final String phone    = etphone.getText().toString().trim()    ;
 
-        if(TextUtils.isEmpty(name)  || TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(phone) ){
+        if(TextUtils.isEmpty(name)  || TextUtils.isEmpty(username) || TextUtils.isEmpty(email)  || TextUtils.isEmpty(phone) ){
 
             Toast.makeText(this,"Please Fill Your Entries correctly",Toast.LENGTH_LONG).show();
 
@@ -69,16 +78,35 @@ public class customer_registration extends AppCompatActivity {
 
         else {
 
-            String id= databasecustomer.push().getKey();
+            //progressBar.setVisibility(View.VISIBLE) ;
+            fbauth.createUserWithEmailAndPassword(email , pswd ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
 
-            customer_details cust = new customer_details(name,username,email,password,phone);
+                    if (task.isSuccessful()){
 
-            databasecustomer.child(id).setValue(cust);
+                        customer_details cust = new customer_details(name,username,email,phone);
 
-            Toast.makeText(this,"Customer Added",Toast.LENGTH_LONG).show();
+                        dbcustomer.child(FirebaseAuth.getInstance().getUid()).setValue(cust).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
 
-            Intent intent = new Intent(getApplicationContext() , customer_options.class) ;
-            startActivity(intent) ;
+                                //progressBar.setVisibility(View.GONE) ;
+                                Toast.makeText( getApplicationContext() ,"Customer Added" , Toast.LENGTH_LONG ).show() ;
+
+                                Intent intent = new Intent(getApplicationContext() , customer_options.class) ;
+                                startActivity(intent) ;
+
+                            }
+                        }) ;
+
+                    }
+                    else{
+                        Toast.makeText( getApplicationContext() , "Registration failed." , Toast.LENGTH_SHORT).show() ;
+                    }
+                }
+            }) ;
+
         }
 
 

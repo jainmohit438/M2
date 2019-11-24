@@ -7,17 +7,15 @@ public class appointment {
 
     String customer , worker , work ;
     Date d ;
-    Time t ;
 
     public appointment() {
     }
 
-    public appointment(String customer, String worker, String work, Date d, Time t) {
+    public appointment(String customer, String worker, String work, Date d) {
         this.customer = customer;
         this.worker = worker;
         this.work = work;
         this.d = d;
-        this.t = t;
     }
 
     public String getCustomer() {
@@ -42,14 +40,6 @@ public class appointment {
 
     public void setD(Date d) {
         this.d = d;
-    }
-
-    public Time getT() {
-        return t;
-    }
-
-    public void setT(Time t) {
-        this.t = t;
     }
 
     public String getWork() {

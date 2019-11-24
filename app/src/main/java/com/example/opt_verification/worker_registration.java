@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -13,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,42 +27,80 @@ import java.util.List;
 
 public class worker_registration extends AppCompatActivity {
 
-    Button btnsubmit ;
+    public static final String numb = "num" ;
 
-    EditText etname , etaadhar , etnum ;
+    EditText etname , etaadhar ;
 
     TextView tvnum ;
 
-    Spinner spnwork ;
+    DatabaseReference dbWorker , dbservice;
 
-    DatabaseReference dbWorker ;
+    FirebaseAuth fbauth ;
+
+    ListView lv ;
+
+    List<services_detail> servicelist ;
+
+    services_detail s ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_registration);
 
-        btnsubmit = findViewById(R.id.btn_submit) ;
-
         etaadhar = findViewById(R.id.et_aadhar) ;
         etname = findViewById(R.id.et_name) ;
-        etnum = findViewById(R.id.et_num) ;
 
         tvnum = findViewById(R.id.tv_number) ;
 
-        spnwork = findViewById(R.id.spn_work) ;
+        lv = findViewById(R.id.wr_lv) ;
+
+        servicelist = new ArrayList<>() ;
 
         dbWorker = FirebaseDatabase.getInstance().getReference("workers") ;
+        dbservice = FirebaseDatabase.getInstance().getReference("services") ;
 
-        Bundle b = getIntent().getExtras() ;
+        Intent intent = getIntent() ;
+        tvnum.setText(intent.getStringExtra(worker_login.NUMBER) );
 
-        tvnum.setText(b.getString("num")) ;
+        fbauth = FirebaseAuth.getInstance();
 
-        btnsubmit.setOnClickListener(new View.OnClickListener() {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                addWorker() ;
+                s = servicelist.get(i) ;
+
+                addWorker();
+            }
+        });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        dbservice.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                servicelist.clear() ;
+
+                for (DataSnapshot servicesnap : dataSnapshot.getChildren()){
+                    services_detail s2 = servicesnap.getValue(services_detail.class) ;
+                    servicelist.add(s2) ;
+                }
+
+                services_list adapter = new services_list( worker_registration.this , servicelist ) ;
+
+                lv.setAdapter(adapter) ;
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -70,8 +111,8 @@ public class worker_registration extends AppCompatActivity {
 
         String name = etname.getText().toString().trim() ;
         String aadhar = etaadhar.getText().toString().trim() ;
-        String work = spnwork.getSelectedItem().toString() ;
-        String num = etnum.getText().toString().trim() ;
+        String work =  s.getName() ;
+        String num = tvnum.getText().toString().trim() ;
 
         if( name.isEmpty() || aadhar.isEmpty() ){
 
@@ -93,6 +134,7 @@ public class worker_registration extends AppCompatActivity {
 
             Toast.makeText( getApplicationContext() , "Registration successful. . " , Toast.LENGTH_SHORT).show() ;
 
+            finish() ;
             Intent intent = new Intent( getApplicationContext() , worker_all_display.class) ;
             startActivity(intent) ;
 

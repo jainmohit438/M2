@@ -41,8 +41,8 @@ public class admin_verify extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_verify);
 
-        tvname = findViewById(R.id.tv_name) ;
-        tvnum = findViewById(R.id.tv_number) ;
+        tvname = findViewById(R.id.tv_na) ;
+        tvnum = findViewById(R.id.tv_num) ;
 
         otp = findViewById(R.id.et_otp) ;
 
@@ -60,7 +60,6 @@ public class admin_verify extends AppCompatActivity {
         btn_verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 verifycode() ;
             }
         });

@@ -10,22 +10,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:id="@+id/lv_services_display" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:id="@+id/tv_appointment_date"/>
+                android:id="@+id/tv_cust_name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_marginTop="25dp"/>
 
-        </LinearLayout>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/lv_services_display"
+                android:layout_below="@+id/tv_cust_name"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/btn_customer_logout"
+                android:text="LOGOUT"
+                android:layout_below="@+id/lv_services_display"/>
+
+        </RelativeLayout>
 
     </ScrollView>
 

@@ -28,13 +28,6 @@
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="127dp" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_marginBottom="25dp"
-                android:id="@+id/et_num"
-                android:hint="Enter your number here"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
@@ -52,24 +45,11 @@
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="351dp" />
 
-            <Spinner
-                android:id="@+id/spn_work"
+            <ListView
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_marginBottom="25dp"
-                android:entries="@array/work"
-                android:textAlignment="center"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="434dp" />
-
-            <Button
-                android:id="@+id/btn_submit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_marginBottom="25dp"
-                android:text="Submit"
-                android:textAlignment="center" />
+                android:layout_height="500dp"
+                android:id="@+id/wr_lv"
+                android:layout_marginBottom="25dp"/>
 
         </LinearLayout>
 

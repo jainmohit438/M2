@@ -48,11 +48,8 @@ public class admin_display extends AppCompatActivity {
         btn_master.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //Intent intent = new Intent(getApplicationContext() , admin_master.class) ;
                 Intent intent = new Intent(getApplicationContext() , admin_master.class) ;
                 startActivity(intent);
-
             }
         });
 

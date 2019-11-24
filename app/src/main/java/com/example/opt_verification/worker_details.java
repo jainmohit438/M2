@@ -16,6 +16,8 @@ public class worker_details {
         this.aadhar = aadhar;
         this.work = work;
         this.number = number;
+        rating = 10.0 ;
+        jobs_done = 0;
     }
 
     public String getName() {

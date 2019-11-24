@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +28,8 @@ import java.util.concurrent.TimeUnit;
 
 public class worker_login extends AppCompatActivity {
 
-    private String NUMBER = "num" ;
+    public static final String NUMBER = "wnum" ;
+    public static final String numb = "num" ;
 
     Button btnverify , btnotp ;
 
@@ -56,7 +58,19 @@ public class worker_login extends AppCompatActivity {
 
         dbworker = FirebaseDatabase.getInstance().getReference("workers") ;
 
-        //fbauth = FirebaseAuth.getInstance() ;
+        fbauth = FirebaseAuth.getInstance() ;
+
+        FirebaseUser user = fbauth.getCurrentUser() ;
+
+        if ( user != null){
+
+            //numb = dbworker.child(user.getUid()).child("work").toString() ;
+
+            finish() ;
+            Intent intent = new Intent( getApplicationContext() , worker_all_display.class) ;
+            startActivity( intent ) ;
+
+        }
 
         btnotp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,9 +82,7 @@ public class worker_login extends AppCompatActivity {
         btnverify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 verifycode();
-                //finish();
             }
         });
 
@@ -138,6 +150,43 @@ public class worker_login extends AppCompatActivity {
         }
         catch (Exception e){
             Toast.makeText(getApplicationContext() , "wrong code." , Toast.LENGTH_SHORT).show();
+
+            dbworker.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.child(etnumber.getText().toString()).exists()){
+
+                        worker_details s = dataSnapshot.child(etnumber.getText().toString()).getValue(worker_details.class) ;
+
+                        Toast.makeText( getApplicationContext() , "Already exists." , Toast.LENGTH_SHORT).show() ;
+
+                        finish() ;
+                        Intent intent = new Intent(getApplicationContext() , worker_all_display.class) ;
+                        intent.putExtra(numb , s.getWork()) ;
+                        intent.putExtra(NUMBER , etnumber.getText().toString()) ;
+                        //Toast.makeText(getApplicationContext() , s.getWork() , Toast.LENGTH_SHORT).show();
+                        startActivity(intent) ;
+
+                    }
+                    else {
+
+                        Toast.makeText( getApplicationContext() , " New user." , Toast.LENGTH_SHORT).show() ;
+
+                        Intent intent = new Intent(getApplicationContext() , worker_registration.class) ;
+                        intent.putExtra(NUMBER , etnumber.getText().toString()) ;
+                        etnumber.setText("");
+                        etotp.setText("");
+                        startActivity(intent) ;
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
         }
     }
 
@@ -150,17 +199,19 @@ public class worker_login extends AppCompatActivity {
 
                             Toast.makeText( getApplicationContext() , "Verification approved." , Toast.LENGTH_LONG).show() ;
 
-                            etnumber.setText("");
-                            etotp.setText("");
-
-                            dbworker.child("number").addListenerForSingleValueEvent(new ValueEventListener() {
+                            dbworker.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    if (dataSnapshot.exists()){
+                                    if (dataSnapshot.child(etnumber.getText().toString()).exists()){
 
-                                        Toast.makeText( getApplicationContext() , "Already exists." , Toast.LENGTH_SHORT).show() ;
+                                        worker_details s = dataSnapshot.child(etnumber.getText().toString()).getValue(worker_details.class) ;
 
+                                        //Toast.makeText( getApplicationContext() , "Already exists." , Toast.LENGTH_SHORT).show() ;
+
+                                        finish() ;
                                         Intent intent = new Intent(getApplicationContext() , worker_all_display.class) ;
+                                        intent.putExtra(numb , s.getWork()) ;
+                                        Toast.makeText(getApplicationContext() , s.getWork() , Toast.LENGTH_SHORT).show();
                                         startActivity(intent) ;
 
                                     }
@@ -169,10 +220,9 @@ public class worker_login extends AppCompatActivity {
                                         Toast.makeText( getApplicationContext() , " New user." , Toast.LENGTH_SHORT).show() ;
 
                                         Intent intent = new Intent(getApplicationContext() , worker_registration.class) ;
-                                        //intent.putExtra(NUMBER , etnumber.getText().toString()) ;
-                                        Bundle b = new Bundle() ;
-                                        b.putString("num" , etnumber.getText().toString()) ;
-                                        intent.putExtras(b) ;
+                                        intent.putExtra(NUMBER , etnumber.getText().toString()) ;
+                                        etnumber.setText("");
+                                        etotp.setText("");
                                         startActivity(intent) ;
 
                                     }
@@ -187,6 +237,7 @@ public class worker_login extends AppCompatActivity {
                         } else { // if verification fails
 
                             Toast.makeText( getApplicationContext() , "Verification failed." , Toast.LENGTH_LONG).show() ;
+
 
                         }
                     }
