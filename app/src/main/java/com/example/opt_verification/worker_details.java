@@ -1,21 +1,25 @@
 package com.example.opt_verification;
 
+import java.util.List;
+
 public class worker_details {
 
     String name , aadhar , work , number ;
     Double rating ;
     Integer jobs_done ;
+    //List<String> wlist ;
 
     public worker_details() {
         rating = 10.0 ;
-        jobs_done = 0;
+        jobs_done = 0 ;
     }
 
-    public worker_details(String name, String aadhar, String work, String number) {
-        this.name = name;
-        this.aadhar = aadhar;
-        this.work = work;
-        this.number = number;
+    public worker_details(String name, String aadhar, String work, String number /*, List<String> l*/) {
+        this.name = name ;
+        this.aadhar = aadhar ;
+        this.work = work ;
+        this.number = number ;
+        //this.wlist = l ;
         rating = 10.0 ;
         jobs_done = 0;
     }
@@ -67,4 +71,12 @@ public class worker_details {
     public void setJobs_done(Integer jobs_done) {
         this.jobs_done = jobs_done;
     }
+/*
+    public List<String> getWlist() {
+        return wlist;
+    }
+
+    public void setWlist(List<String> wlist) {
+        this.wlist = wlist;
+    }*/
 }

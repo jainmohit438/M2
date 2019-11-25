@@ -210,8 +210,9 @@ public class worker_login extends AppCompatActivity {
 
                                         finish() ;
                                         Intent intent = new Intent(getApplicationContext() , worker_all_display.class) ;
-                                        intent.putExtra(numb , s.getWork()) ;
-                                        Toast.makeText(getApplicationContext() , s.getWork() , Toast.LENGTH_SHORT).show();
+                                        //intent.putExtra(numb , s.getWork()) ;
+                                        intent.putExtra(NUMBER , etnumber.getText().toString()) ;
+                                        //Toast.makeText(getApplicationContext() , s.getWork() , Toast.LENGTH_SHORT).show();
                                         startActivity(intent) ;
 
                                     }

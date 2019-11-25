@@ -64,18 +64,6 @@ public class worker_all_display extends AppCompatActivity {
         wrkl = getIntent().getStringExtra(worker_login.numb) ;
         wrkr = getIntent().getStringExtra(worker_registration.numb) ;
 
-        if (!wrkr.isEmpty()){
-            wrk = wrkr ;
-        }
-        else if(!wrkl.isEmpty()){
-            wrk = wrkl ;
-        }
-        else {
-            wrk = "" ;
-            Toast.makeText( getApplicationContext() , "empty" , Toast.LENGTH_SHORT).show() ;
-        }
-        tv.setText("Pending appointments for " + wrk + " are :") ;
-
         dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
         dbwa = FirebaseDatabase.getInstance().getReference("wappointment") ;
         dbca = FirebaseDatabase.getInstance().getReference("cappointment") ;
@@ -148,15 +136,28 @@ public class worker_all_display extends AppCompatActivity {
                         dialogInterface.cancel() ;
                     }
                 });
-
         AlertDialog alertDialog = builder.create() ;
         alertDialog.show() ;
-
     }
 
     @Override
     protected void onStart() {
         super.onStart() ;
+
+        dbworker.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                wname = dataSnapshot.child("name").getValue().toString() ;
+                wrk = dataSnapshot.child("work").getValue().toString() ;
+                tvname.setText("Welcome back " + wname + ".");
+                tv.setText("Pending appointments for " + wrk + " are :") ;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        }) ;
 
         dbpa.addValueEventListener(new ValueEventListener() {
             @Override
@@ -174,19 +175,6 @@ public class worker_all_display extends AppCompatActivity {
                 customer_pending_for_worker adapter = new customer_pending_for_worker( worker_all_display.this , app_list) ;
 
                 lv.setAdapter(adapter) ;
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        }) ;
-
-        dbworker.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                wname = dataSnapshot.child("name").getValue().toString() ;
-                tvname.setText("Welcome back " + wname + ".");
             }
 
             @Override
