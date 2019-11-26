@@ -33,7 +33,7 @@ public class customer_registration extends AppCompatActivity {
 
     DatabaseReference dbcustomer;
 
-    ProgressBar progressBar ;
+    ProgressDialog progressDialog ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,8 @@ public class customer_registration extends AppCompatActivity {
         etphone= (EditText) findViewById(R.id.etphone);
 
         btn_register = findViewById(R.id.bsignup) ;
+
+        progressDialog = new ProgressDialog( customer_registration.this) ;
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +81,8 @@ public class customer_registration extends AppCompatActivity {
             Toast.makeText( getApplicationContext() , "Invalid phone number." , Toast.LENGTH_SHORT).show() ;
         }
         else {
-
-            //progressBar.setVisibility(View.VISIBLE) ;
+            progressDialog.setMessage("Registering....Please wait.");
+            progressDialog.show() ;
             fbauth.createUserWithEmailAndPassword(email , pswd ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -93,9 +95,16 @@ public class customer_registration extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
-                                //progressBar.setVisibility(View.GONE) ;
+                                progressDialog.dismiss() ;
                                 Toast.makeText( getApplicationContext() ,"Customer Added" , Toast.LENGTH_LONG ).show() ;
 
+                                etname.setText("");
+                                etemail.setText("");
+                                etpassword.setText("");
+                                etphone.setText("");
+                                etusername.setText("");
+
+                                finish() ;
                                 Intent intent = new Intent(getApplicationContext() , customer_options.class) ;
                                 startActivity(intent) ;
 
@@ -104,6 +113,7 @@ public class customer_registration extends AppCompatActivity {
 
                     }
                     else{
+                        progressDialog.dismiss() ;
                         Toast.makeText( getApplicationContext() , "Registration failed." , Toast.LENGTH_SHORT).show() ;
                     }
                 }

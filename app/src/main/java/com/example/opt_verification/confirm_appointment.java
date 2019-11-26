@@ -2,15 +2,15 @@ package com.example.opt_verification;
 
 import java.util.Date;
 
-public class appointment_customer {
+public class confirm_appointment {
 
     String cname , wname , work ;
     Date d ;
 
-    public appointment_customer() {
+    public confirm_appointment() {
     }
 
-    public appointment_customer(String cname, String wname, String work, Date d) {
+    public confirm_appointment(String cname, String wname, String work, Date d) {
         this.cname = cname;
         this.wname = wname;
         this.work = work;

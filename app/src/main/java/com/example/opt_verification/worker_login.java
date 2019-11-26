@@ -3,6 +3,7 @@ package com.example.opt_verification;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +42,8 @@ public class worker_login extends AppCompatActivity {
 
     DatabaseReference dbworker ;
 
+    ProgressDialog progressDialog ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,12 +65,14 @@ public class worker_login extends AppCompatActivity {
 
         FirebaseUser user = fbauth.getCurrentUser() ;
 
+        progressDialog = new ProgressDialog( worker_login.this ) ;
+
         if ( user != null){
 
             //numb = dbworker.child(user.getUid()).child("work").toString() ;
 
             finish() ;
-            Intent intent = new Intent( getApplicationContext() , worker_all_display.class) ;
+            Intent intent = new Intent( getApplicationContext() , worker_options.class) ;
             startActivity( intent ) ;
 
         }
@@ -102,6 +107,7 @@ public class worker_login extends AppCompatActivity {
             etnumber.requestFocus() ;
             return ;
         }
+        progressDialog.setMessage( "Sending otp." );
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 num,        // Phone number to verify
@@ -125,6 +131,7 @@ public class worker_login extends AppCompatActivity {
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
+            progressDialog.dismiss() ;
             Toast.makeText( getApplicationContext() , "Code sent successfully. " , Toast.LENGTH_LONG).show() ;
 
             sent_code = s ;
@@ -143,6 +150,7 @@ public class worker_login extends AppCompatActivity {
         }
 
         try {
+            progressDialog.setMessage( "Verifying....Please wait." );
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(sent_code, code) ;
 
             signInWithPhoneAuthCredential(credential) ;
@@ -197,6 +205,7 @@ public class worker_login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) { // if verifiaction is successful
 
+                            progressDialog.dismiss() ;
                             Toast.makeText( getApplicationContext() , "Verification approved." , Toast.LENGTH_LONG).show() ;
 
                             dbworker.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -206,10 +215,10 @@ public class worker_login extends AppCompatActivity {
 
                                         worker_details s = dataSnapshot.child(etnumber.getText().toString()).getValue(worker_details.class) ;
 
-                                        //Toast.makeText( getApplicationContext() , "Already exists." , Toast.LENGTH_SHORT).show() ;
+                                        Toast.makeText( getApplicationContext() , "Welcome back." , Toast.LENGTH_SHORT).show() ;
 
                                         finish() ;
-                                        Intent intent = new Intent(getApplicationContext() , worker_all_display.class) ;
+                                        Intent intent = new Intent(getApplicationContext() , worker_options.class) ;
                                         //intent.putExtra(numb , s.getWork()) ;
                                         intent.putExtra(NUMBER , etnumber.getText().toString()) ;
                                         //Toast.makeText(getApplicationContext() , s.getWork() , Toast.LENGTH_SHORT).show();
@@ -236,7 +245,7 @@ public class worker_login extends AppCompatActivity {
                             });
 
                         } else { // if verification fails
-
+                            progressDialog.dismiss() ;
                             Toast.makeText( getApplicationContext() , "Verification failed." , Toast.LENGTH_LONG).show() ;
 
 

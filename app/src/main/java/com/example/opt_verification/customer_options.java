@@ -68,6 +68,8 @@ public class customer_options extends AppCompatActivity {
 
         fbauth = FirebaseAuth.getInstance() ;
 
+        progressDialog = new ProgressDialog( customer_options.this) ;
+
         FirebaseUser user = fbauth.getCurrentUser() ;
 
         if ( user == null){
@@ -149,6 +151,8 @@ public class customer_options extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        progressDialog.setMessage("Loading...");
+        progressDialog.show() ;
         dbcustomer.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -163,5 +167,7 @@ public class customer_options extends AppCompatActivity {
 
             }
         }) ;
+
+        progressDialog.dismiss() ;
     }
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".worker_options">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="25dp"
+        android:id="@+id/wo_tv_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:id="@+id/wo_tv_work"
+        android:layout_below="@+id/wo_tv_name"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:id="@+id/wo_btn_pending"
+        android:text="View work requests."
+        android:layout_below="@+id/wo_tv_work"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:id="@+id/wo_btn_confirmed"
+        android:text="View confirmed appointments."
+        android:layout_below="@+id/wo_btn_pending"
+        android:layout_marginTop="25dp"/>
+
+</RelativeLayout>

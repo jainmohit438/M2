@@ -55,8 +55,6 @@ public class customer_new_appointment extends AppCompatActivity
 
     FirebaseAuth fbauth ;
 
-    ProgressDialog progressDialog ;
-
     String customer_name ;
     services_detail s ;
 

@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class customer_confirm extends ArrayAdapter<confirm_appointment> {
+public class w_confirm extends ArrayAdapter<confirm_appointment> {
 
     private Activity cont;
     private List<confirm_appointment> a1;
 
-    public customer_confirm(Activity context, List<confirm_appointment> alist) {
+    public w_confirm(Activity context, List<confirm_appointment> alist) {
         super(context, R.layout.customer_confirm, alist);
         this.cont = context;
         this.a1 = alist;
@@ -32,9 +32,10 @@ public class customer_confirm extends ArrayAdapter<confirm_appointment> {
         confirm_appointment a = a1.get(pos);
 
         tv_wrk.setText(a.getWork());
-        tv_wname.setText(a.getWname());
+        tv_wname.setText(a.getCname());
         tv_date.setText(a.getD().toString());
 
         return lv_item;
     }
+
 }

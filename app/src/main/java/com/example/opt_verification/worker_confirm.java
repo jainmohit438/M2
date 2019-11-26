@@ -15,39 +15,40 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class customer_confirm_appointment extends AppCompatActivity {
+public class worker_confirm extends AppCompatActivity {
 
-    DatabaseReference dbca ;
-    List<confirm_appointment> cl ;
     ListView lv ;
+    List<confirm_appointment> l ;
+    DatabaseReference dbwa ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_confirm_appointment);
+        setContentView(R.layout.activity_worker_confirm);
 
-        String n = getIntent().getStringExtra(customer_options.customer_name) ;
-        dbca = FirebaseDatabase.getInstance().getReference("cappointment").child(n) ;
-        lv = findViewById(R.id.cca_lv) ;
-        cl = new ArrayList<>() ;
+        lv = findViewById(R.id.wc_lv) ;
+        l = new ArrayList<>() ;
+
+        String na = getIntent().getStringExtra( worker_options.na ) ;
+        dbwa = FirebaseDatabase.getInstance().getReference("wappointment").child(na) ;
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        dbca.addValueEventListener(new ValueEventListener() {
+        dbwa.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                cl.clear() ;
-
-                for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    confirm_appointment a = ds.getValue(confirm_appointment.class) ;
-                    cl.add(a) ;
+                l.clear() ;
+                for (DataSnapshot ds : dataSnapshot.getChildren() ){
+                    confirm_appointment ca = ds.getValue(confirm_appointment.class) ;
+                    l.add(ca) ;
                 }
 
-                customer_confirm adapter = new customer_confirm( customer_confirm_appointment.this , cl) ;
+                w_confirm adapter = new w_confirm( worker_confirm.this , l );
                 lv.setAdapter(adapter) ;
             }
 

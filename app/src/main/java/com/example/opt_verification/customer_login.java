@@ -41,6 +41,8 @@ public class customer_login extends AppCompatActivity {
 
         fbauth = FirebaseAuth.getInstance() ;
 
+        progressDialog = new ProgressDialog( customer_login.this ) ;
+
         if (fbauth.getCurrentUser() != null){
             finish() ;
             Intent intent = new Intent( getApplicationContext() , customer_options.class ) ;
@@ -63,7 +65,6 @@ public class customer_login extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void verify_customer(){
@@ -73,21 +74,21 @@ public class customer_login extends AppCompatActivity {
         if (username.isEmpty() || pswd.isEmpty()){
             Toast.makeText( getApplicationContext() , "Please enter details properly." , Toast.LENGTH_SHORT).show() ;
         }
-
-        //progressDialog.setMessage("Logging in.....please wait!!");
-        //progressDialog.show() ;
         else {
+            progressDialog.setMessage("Logging in.....please wait!!");
+            progressDialog.show() ;
             fbauth.signInWithEmailAndPassword(username , pswd).addOnCompleteListener(customer_login.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                     if (task.isSuccessful()){
-
+                        progressDialog.dismiss();
                         finish() ;
                         Intent intent = new Intent( getApplicationContext() , customer_options.class ) ;
                         startActivity(intent) ;
                     }
                     else{
+                        progressDialog.dismiss();
                         Toast.makeText( getApplicationContext() , "Email id/Password is incorrect." , Toast.LENGTH_SHORT).show() ;
                     }
 

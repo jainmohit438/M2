@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".customer_confirm_appointment"></activity>
+        <activity android:name=".worker_pending"></activity>
+        <activity android:name=".worker_options" />
+        <activity android:name=".worker_confirm" />
+        <activity android:name=".customer_confirm_appointment" />
         <activity android:name=".customer_pending_appointment" />
         <activity android:name=".customer_new_appointment" />
-        <activity android:name=".worker_all_display" />
         <activity android:name=".admin_master" />
         <activity android:name=".admin_display" />
         <activity android:name=".admin_verify" />
