@@ -29,10 +29,9 @@ public class admin_master extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                master_verify();
-
+                master_verify();/*
                 Intent intent = new Intent(getApplicationContext() , admin_options.class) ;
-                startActivity(intent);
+                startActivity(intent);*/
 
             }
         });
@@ -40,23 +39,29 @@ public class admin_master extends AppCompatActivity {
     }
 
     private void master_verify(){
-/*
-        if (et_id.getText()=="avi27mitts"){
-            if (et_pswd=="12345"){
-                Intent intent = new Intent(getApplicationContext() , admin_options.class) ;
+
+        if (et_id.getText().toString().equals("avi27mitts")){
+            if (et_pswd.getText().toString().equals("12345")){
+                finish() ;
+                Intent intent = new Intent(getApplicationContext() , admin_display.class) ;
                 startActivity(intent);
             }
+            else{
+                Toast.makeText( admin_master.this , "Wrong password." , Toast.LENGTH_SHORT).show() ;
+            }
         }
-        else if(et_id=="mohit"){
-            if(et_pswd=="12345678"){
-                Intent intent = new Intent(getApplicationContext() , admin_options.class) ;
+        else if(et_id.getText().toString().equals("jainmohit438")){
+            if(et_pswd.getText().toString().equals("12345678")){
+                finish() ;
+                Intent intent = new Intent(getApplicationContext() , admin_display.class) ;
                 startActivity(intent) ;
+            }
+            else {
+                Toast.makeText( admin_master.this , "Wrong password." , Toast.LENGTH_SHORT).show() ;
             }
         }
         else{
-            Toast.makeText(getApplicationContext() , "Wrong details" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext() , "Wrong details." , Toast.LENGTH_SHORT).show();
         }
-*/
     }
-
 }

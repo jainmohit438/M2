@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext() , admin_display.class) ;
+                Intent intent = new Intent(getApplicationContext() , admin_master.class) ;
                 startActivity(intent) ;
 
                 //Toast.makeText(this , "button clicked" , Toast.LENGTH_LONG).show() ;

@@ -105,7 +105,7 @@ public class worker_options extends AppCompatActivity {
                         worker_options.super.onBackPressed() ;
                     }
                 })
-                .setNegativeButton("No!Set another appointment.", new DialogInterface.OnClickListener() {
+                .setNegativeButton("No.", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 

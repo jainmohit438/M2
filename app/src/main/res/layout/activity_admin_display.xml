@@ -7,6 +7,12 @@
     tools:context=".admin_display"
     android:background="@color/darkpurple">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/imgadminlist"
+        android:src="@drawable/listadmins"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -15,42 +21,15 @@
         android:id="@+id/ad_tv"
         android:text="EXISTING ADMINS :- "
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginTop="15dp"/>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/imgadminlist"
-        android:src="@drawable/listadmins"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:id="@+id/ad_scv"
-        android:layout_below="@+id/ad_tv"
-        android:layout_above="@+id/btn_admin_master"
-        android:layout_marginBottom="25dp"
-        android:layout_marginTop="25dp">
-
-    </ScrollView>
+        android:layout_marginTop="25dp"/>
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="match_parent"
         android:id="@+id/lv_admin_display"
         android:layout_below="@+id/ad_tv"
-        android:layout_above="@+id/btn_admin_master"
-        android:layout_marginBottom="25dp"/>
-
-    <Button
-        android:id="@+id/btn_admin_master"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="@color/airforceblue"
-        android:textColor="@color/amber"
-        android:textSize="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:text="Login using master admin and password." />
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"/>
 
 </RelativeLayout>

@@ -24,8 +24,6 @@ public class admin_display extends AppCompatActivity {
     public static final String adminname = "name" ;
     public static final String adminnum = "num" ;
 
-    Button btn_master ;
-
     ListView lvdisplay ;
 
     List<admin_details> adminlist ;
@@ -37,21 +35,11 @@ public class admin_display extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_display);
 
-        btn_master = findViewById(R.id.btn_admin_master) ;
-
         lvdisplay = findViewById(R.id.lv_admin_display) ;
 
         adminlist = new ArrayList<>() ;
 
         dbadmin = FirebaseDatabase.getInstance().getReference("admin") ;
-
-        btn_master.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext() , admin_master.class) ;
-                startActivity(intent);
-            }
-        });
 
         lvdisplay.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -68,7 +56,6 @@ public class admin_display extends AppCompatActivity {
 
             }
         });
-
     }
 
     @Override
