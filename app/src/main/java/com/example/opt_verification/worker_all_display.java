@@ -57,7 +57,15 @@ public class worker_all_display extends AppCompatActivity {
         fbauth = FirebaseAuth.getInstance() ;
 
         FirebaseUser user = fbauth.getCurrentUser() ;
-        String n = getIntent().getStringExtra(worker_login.NUMBER) ;
+        String nl=getIntent().getStringExtra(worker_login.NUMBER);
+        String nr=getIntent().getStringExtra(worker_registration.numb);
+        String n;
+        if (nl.isEmpty()) {
+            n=nr;
+        }
+        else {
+            n=nl;
+        }
 
         app_list = new ArrayList<>() ;
 

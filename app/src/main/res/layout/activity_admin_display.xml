@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin_display">
+    tools:context=".admin_display"
+    android:background="@color/darkpurple">
+
 
     <TextView
         android:layout_width="match_parent"

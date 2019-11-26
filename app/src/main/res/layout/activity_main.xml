@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/darkpurple">
 
 
         <Button
             android:id="@+id/btn_customer_login"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/imgmain"
             android:background="@color/airforceblue"
@@ -29,7 +30,7 @@
         <Button
             android:id="@+id/btn_worker_login"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
             android:layout_marginTop="15dp"
             android:layout_below="@+id/btn_customer_login"
             android:background="@color/airforceblue"
@@ -42,7 +43,7 @@
         <Button
             android:id="@+id/btn_admin"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
             android:layout_marginTop="15dp"
             android:layout_below="@+id/btn_worker_login"
             android:text="ADMIN LOGIN"

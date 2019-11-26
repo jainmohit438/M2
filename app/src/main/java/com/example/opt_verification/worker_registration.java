@@ -149,6 +149,7 @@ public class worker_registration extends AppCompatActivity {
 
             finish() ;
             Intent intent = new Intent( getApplicationContext() , worker_all_display.class) ;
+            intent.putExtra(numb,num);
             startActivity(intent) ;
 
         }

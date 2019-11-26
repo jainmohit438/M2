@@ -10,4 +10,8 @@
     <color name="black">#000000</color>
     <color name="blue">#0000FF</color>
     <color name="flame">#E25822</color>
+    <color name="moonstone">#3aa8c1</color>
+    <color name="lightpink">#ffcdd2</color>
+    <color name="lightpurple">#ede7f6</color>
+    <color name="darkpurple">#d1c4e9</color>
 </resources>

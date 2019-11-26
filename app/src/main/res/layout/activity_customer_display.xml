@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer_display">
+    tools:context=".customer_display"
+    android:background="@color/darkpurple">
 
     <ListView
         android:layout_width="match_parent"

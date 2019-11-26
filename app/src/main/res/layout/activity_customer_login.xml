@@ -4,7 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer_login">
+    tools:context=".customer_login"
+    android:background="@color/darkpurple">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="383dp"
+        android:layout_height="203dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/sign_in_logo"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="5dp" />
 
     <EditText
         android:id="@+id/etusername"
@@ -17,7 +27,6 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="246dp"
         android:layout_below="@+id/img"/>
-
 
     <EditText
         android:id="@+id/etpassword"
@@ -49,35 +58,12 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginTop="15dp"
-        android:layout_below="@+id/forgot_password"
+        android:layout_below="@+id/btn_submit_sigin"
         android:background="@color/airforceblue"
         android:text="Signup"
         android:textColor="@color/amber"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="527dp" />
-
-    <Button
-        android:id="@+id/forgot_password"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/btn_submit_sigin"
-        android:background="@color/airforceblue"
-        android:text="Forgot my Password"
-        android:textSize="20dp"
-        android:textColor="@color/amber"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="460dp" />
-
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="383dp"
-        android:layout_height="203dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/sign_in_logo"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="5dp" />
-
 
 </RelativeLayout>
