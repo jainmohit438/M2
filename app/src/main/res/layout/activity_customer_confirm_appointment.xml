@@ -6,10 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".customer_confirm_appointment"
     android:background="@color/darkpurple">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/imgcust_thank"
+        android:src="@drawable/customer_thanks"
+        android:layout_marginTop="25dp"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/imgcust_thank"
         android:id="@+id/cca_lv"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp"/>

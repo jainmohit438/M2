@@ -11,10 +11,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="65dp"
+        android:layout_below="@+id/imgadminlist"
         android:id="@+id/ad_tv"
         android:text="EXISTING ADMINS :- "
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="15dp"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/imgadminlist"
+        android:src="@drawable/listadmins"/>
 
     <ScrollView
         android:layout_width="match_parent"

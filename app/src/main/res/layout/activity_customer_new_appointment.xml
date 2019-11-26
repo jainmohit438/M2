@@ -7,9 +7,16 @@
     tools:context=".customer_new_appointment"
     android:background="@color/darkpurple">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/imgsetapp"
+        android:src="@drawable/viewallworker"
+        android:layout_marginTop="25dp"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/imgsetapp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp"
         android:id="@+id/cna_lv" />
