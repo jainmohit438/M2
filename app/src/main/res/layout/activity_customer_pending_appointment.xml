@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkpurple">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/imgcust_wait"
+        android:src="@drawable/cust_waiting"
+        android:layout_marginTop="25dp"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imgcust_wait"
+        android:id="@+id/cpa_lv"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"/>
+
+</RelativeLayout>
