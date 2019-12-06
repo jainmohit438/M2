@@ -29,7 +29,7 @@ public class customer_pending_appointment extends AppCompatActivity {
         setContentView(R.layout.activity_customer_pending_appointment);
 
         cname = getIntent().getStringExtra(customer_options.customer_name) ;
-        dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
+        dbpa = FirebaseDatabase.getInstance().getReference("pappointment").child(cname) ;
         pa_list = new ArrayList<>() ;
         lv = findViewById(R.id.cpa_lv) ;
 
@@ -47,7 +47,7 @@ public class customer_pending_appointment extends AppCompatActivity {
 
                 for (DataSnapshot psnap : dataSnapshot.getChildren()){
                     pending_appointment p = psnap.getValue(pending_appointment.class) ;
-                    if (p.getCname().equals(cname)){
+                    if (p.cname.equals(cname)){
                         pa_list.add(p) ;
                     }
                 }

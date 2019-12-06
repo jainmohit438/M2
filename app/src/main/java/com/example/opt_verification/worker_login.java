@@ -108,6 +108,7 @@ public class worker_login extends AppCompatActivity {
             return ;
         }
         progressDialog.setMessage( "Sending otp." );
+        progressDialog.show() ;
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 num,        // Phone number to verify
@@ -151,6 +152,7 @@ public class worker_login extends AppCompatActivity {
 
         try {
             progressDialog.setMessage( "Verifying....Please wait." );
+            progressDialog.show();
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(sent_code, code) ;
 
             signInWithPhoneAuthCredential(credential) ;

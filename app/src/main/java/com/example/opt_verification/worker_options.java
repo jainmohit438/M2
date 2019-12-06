@@ -10,8 +10,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,8 +24,8 @@ public class worker_options extends AppCompatActivity {
 
     TextView tv_name , tv_work ;
     Button btn_pending , btn_confirm ;
-    DatabaseReference db ;
-    String wrk , wname ;
+    DatabaseReference db , dbw ;
+    String wrk , wname , num="a";
     public static final String w = "work" , na = "name";
     FirebaseAuth fbauth ;
 
@@ -39,16 +41,23 @@ public class worker_options extends AppCompatActivity {
         btn_pending = findViewById(R.id.wo_btn_pending) ;
 
         fbauth = FirebaseAuth.getInstance() ;
+        FirebaseUser user = fbauth.getCurrentUser() ;
 
-        String nl = getIntent().getStringExtra(worker_login.NUMBER) ;
-        String nr = getIntent().getStringExtra(worker_registration.numb) ;
-        String n;
-        if(nl.isEmpty()){
-            n = nr ;
-        }
-        else {
+        dbw = FirebaseDatabase.getInstance().getReference("workers").child(user.getUid()) ;
+
+        String nl = "no" , nr = "no" ;
+        nl = getIntent().getStringExtra(worker_login.NUMBER) ;
+        //nr = getIntent().getStringExtra(worker_registration.numb) ;
+        String n ;//= FirebaseDatabase.getInstance().getReference("workers").child(user.getUid()).child("number").toString() ;
+        //Toast.makeText( worker_options.this , "h" + nr + "o" , Toast.LENGTH_SHORT).show() ;
+        /*
+        if(nr.){
             n = nl ;
         }
+        else {
+            n = nr ;
+        }*/
+        n = nl ;
 
         db = FirebaseDatabase.getInstance().getReference("workers").child(n) ;
 
@@ -74,14 +83,14 @@ public class worker_options extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        super.onStart();
+        super.onStart() ;
 
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 wname = dataSnapshot.child("name").getValue().toString() ;
                 wrk = dataSnapshot.child("work").getValue().toString() ;
-                tv_name.setText("Welcome back " + wname + ".");
+                tv_name.setText("Welcome back " + wname + ".") ;
                 tv_work.setText("Pending appointments for " + wrk + " are :") ;
             }
 
@@ -117,4 +126,5 @@ public class worker_options extends AppCompatActivity {
         alertDialog.show() ;
 
     }
+
 }

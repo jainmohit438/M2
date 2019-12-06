@@ -148,10 +148,11 @@ public class worker_registration extends AppCompatActivity {
             Toast.makeText( getApplicationContext() , "Registration successful. . " , Toast.LENGTH_SHORT).show() ;
 
             finish() ;
-            Intent intent = new Intent( getApplicationContext() , worker_options.class) ;
+            Intent intent = new Intent( getApplicationContext() , worker_login.class) ;
             intent.putExtra( numb , num ) ;
+            fbauth.signOut() ;
             startActivity(intent) ;
-
+            Toast.makeText( worker_registration.this , "Please login again to continue." , Toast.LENGTH_SHORT).show() ;
         }
 
     }
