@@ -29,8 +29,7 @@
         android:id="@+id/s_lv"
         android:layout_above="@+id/btn_accept"
         android:layout_below="@+id/s_tv"
-        android:layout_marginBottom="25dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginBottom="25dp" />
 
     <Button
         android:id="@+id/btn_accept"

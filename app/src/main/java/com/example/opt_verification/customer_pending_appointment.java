@@ -21,17 +21,19 @@ public class customer_pending_appointment extends AppCompatActivity {
     DatabaseReference dbpa ;
     ListView lv ;
     List<pending_appointment> pa_list ;
-    String cname ;
+    String cname = "abc" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_pending_appointment);
 
-        cname = getIntent().getStringExtra(customer_options.customer_name) ;
-        dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
         pa_list = new ArrayList<>() ;
         lv = findViewById(R.id.cpa_lv) ;
+
+        cname = getIntent().getStringExtra(customer_options.customer_name) ;
+        dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
+        Toast.makeText( customer_pending_appointment.this , cname , Toast.LENGTH_SHORT).show() ;
 
     }
 
@@ -47,7 +49,9 @@ public class customer_pending_appointment extends AppCompatActivity {
 
                 for (DataSnapshot psnap : dataSnapshot.getChildren()){
                     pending_appointment p = psnap.getValue(pending_appointment.class) ;
-                    if (p.getCname().equals(cname)){
+                    //Toast.makeText( customer_pending_appointment.this , p.getCname() , Toast.LENGTH_SHORT).show() ;
+                    String n = p.getCname() ;
+                    if ( n.equals( cname )) {
                         pa_list.add(p) ;
                     }
                 }
