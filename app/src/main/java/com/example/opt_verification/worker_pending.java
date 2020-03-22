@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,9 +26,10 @@ public class worker_pending extends AppCompatActivity {
 
     ListView lv ;
     List<pending_appointment> li ;
-    DatabaseReference dbpa , dbwa , dbca ;
+    DatabaseReference dbpa , dbwa , dbca , dbw ;
     String idpa , wrk , cname , wname ;
     Date da ;
+    TextView tv ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +41,13 @@ public class worker_pending extends AppCompatActivity {
         dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
         dbwa = FirebaseDatabase.getInstance().getReference("wappointment") ;
         dbca = FirebaseDatabase.getInstance().getReference("cappointment") ;
+        //dbw = FirebaseDatabase.getInstance().getReference("workers").child() ;
 
         wrk = getIntent().getStringExtra( worker_options.w ) ;
         wname = getIntent().getStringExtra( worker_options.na) ;
+
+        tv = findViewById(R.id.wp_tv_work) ;
+        tv.setText("Pending appointments for " + wrk + " are :") ;
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -63,13 +70,13 @@ public class worker_pending extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                confirm_appointment ac = new confirm_appointment(cname , wname , wrk , da ) ;
-
                                 String idw = dbwa.push().getKey() ;
-                                dbwa.child(idw).setValue(ac) ;
+                                confirm_appointment acw = new confirm_appointment( idw , cname , wname , wrk , da ) ;
+                                dbwa.child(idw).setValue(acw) ;
 
                                 String idc = dbca.push().getKey() ;
-                                dbca.child(idc).setValue(ac) ;
+                                confirm_appointment acc = new confirm_appointment( idc , cname , wname , wrk , da ) ;
+                                dbca.child(idc).setValue(acc) ;
 
                                 dbpa.child(idpa).removeValue() ;
 

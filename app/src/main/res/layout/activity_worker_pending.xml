@@ -6,11 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".worker_pending">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/wp_tv_work"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentTop="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/wp_lv"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"/>
+        android:layout_marginBottom="25dp"
+        android:layout_below="@+id/wp_tv_work"/>
 
 </RelativeLayout>

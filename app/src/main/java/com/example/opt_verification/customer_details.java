@@ -4,6 +4,7 @@ import java.util.List;
 
 public class customer_details {
 
+    String id ;
     String cname;
     String cusername;
     String cemail;
@@ -14,11 +15,20 @@ public class customer_details {
         this.a = null ;
     }
 
-    public customer_details(String cname, String cusername, String cemail , String cphone) {
+    public customer_details(String id , String cname, String cusername, String cemail , String cphone) {
+        this.id = id ;
         this.cname = cname;
         this.cusername = cusername;
         this.cemail = cemail;
         this.cphone = cphone;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCname() {

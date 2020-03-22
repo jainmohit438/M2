@@ -3,10 +3,14 @@ package com.example.opt_verification;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,10 +22,11 @@ import java.util.List;
 
 public class customer_pending_appointment extends AppCompatActivity {
 
-    DatabaseReference dbpa ;
+    DatabaseReference dbpa , dbcustomer ;
     ListView lv ;
     List<pending_appointment> pa_list ;
-    String cname = "abc" ;
+    String na = "abc" ;
+    FirebaseAuth fbauth ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +36,41 @@ public class customer_pending_appointment extends AppCompatActivity {
         pa_list = new ArrayList<>() ;
         lv = findViewById(R.id.cpa_lv) ;
 
-        cname = getIntent().getStringExtra(customer_options.customer_name) ;
+        na = getIntent().getStringExtra(customer_options.customer_name) ;
         dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
-        Toast.makeText( customer_pending_appointment.this , cname , Toast.LENGTH_SHORT).show() ;
+        dbcustomer = FirebaseDatabase.getInstance().getReference("customer") ;
+        fbauth = FirebaseAuth.getInstance() ;
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                pending_appointment pa = pa_list.get(i) ;
+                final String idpa = pa.getId() ;
+
+                AlertDialog.Builder builder = new AlertDialog.Builder( customer_pending_appointment.this ) ;
+                builder.setMessage("Are you sure you want to cancel this appointment?")
+                        .setCancelable(true)
+                        .setPositiveButton("Yes, CANCEL!", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dbpa.child(idpa).removeValue() ;
+                            }
+                        })
+                        .setNegativeButton("No!", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                dialogInterface.cancel() ;
+                            }
+                        });
+
+                AlertDialog alertDialog = builder.create() ;
+                alertDialog.show() ;
+
+
+            }
+        });
 
     }
 
@@ -49,9 +86,8 @@ public class customer_pending_appointment extends AppCompatActivity {
 
                 for (DataSnapshot psnap : dataSnapshot.getChildren()){
                     pending_appointment p = psnap.getValue(pending_appointment.class) ;
-                    //Toast.makeText( customer_pending_appointment.this , p.getCname() , Toast.LENGTH_SHORT).show() ;
                     String n = p.getCname() ;
-                    if ( n.equals( cname )) {
+                    if ( na.equals( n ) ) {
                         pa_list.add(p) ;
                     }
                 }
@@ -66,6 +102,5 @@ public class customer_pending_appointment extends AppCompatActivity {
 
             }
         }) ;
-
     }
 }

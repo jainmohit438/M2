@@ -53,7 +53,6 @@ public class admin_display extends AppCompatActivity {
                 intent.putExtra(adminnum , ad.getAdmin_number()) ;
 
                 startActivity(intent) ;
-
             }
         });
     }

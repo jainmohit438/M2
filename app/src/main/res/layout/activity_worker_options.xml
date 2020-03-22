@@ -4,33 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".worker_options">
+    tools:context=".worker_options"
+    android:background="@color/darkpurple">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginTop="25dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
         android:id="@+id/wo_tv_name"
+        android:layout_below="@+id/imgwork_welcome"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
-    <TextView
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="25dp"
+        android:id="@+id/imgwork_welcome"
+        android:src="@drawable/welcomework1"/>
+
+    <Button
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:id="@+id/wo_tv_work"
+        android:background="@color/airforceblue"
+        android:textColor="@color/amber"
+        android:textSize="20dp"
+        android:id="@+id/wo_btn_pending"
+        android:text="View work requests."
         android:layout_below="@+id/wo_tv_name"
         android:layout_marginTop="25dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:id="@+id/wo_btn_pending"
-        android:text="View work requests."
-        android:layout_below="@+id/wo_tv_work"
-        android:layout_marginTop="25dp"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:background="@color/airforceblue"
+        android:textColor="@color/amber"
+        android:textSize="20dp"
         android:id="@+id/wo_btn_confirmed"
         android:text="View confirmed appointments."
         android:layout_below="@+id/wo_btn_pending"

@@ -7,12 +7,18 @@
     tools:context=".add_service"
     android:background="@color/darkpurple">
 
+    <ImageView
+        android:id="@+id/imgadd_service"
+        android:layout_width="387dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/salary" />
 
     <EditText
         android:id="@+id/et_new_service"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/imgadd_service"
         android:hint="Add new service here."
         tools:layout_editor_absoluteX="0dp"
@@ -29,20 +35,11 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="355dp" />
 
-    <ImageView
-        android:id="@+id/imgadd_service"
-        android:layout_width="387dp"
-        android:layout_height="225dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/salary"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="12dp" />
-
     <Button
         android:id="@+id/btn_add_serv"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/et_salary"
         android:background="@color/airforceblue"
         android:textColor="@color/amber"
@@ -51,5 +48,13 @@
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="482dp" />
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/as_lv"
+        android:layout_below="@+id/btn_add_serv"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

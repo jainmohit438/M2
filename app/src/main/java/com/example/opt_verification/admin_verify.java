@@ -3,6 +3,7 @@ package com.example.opt_verification;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +37,8 @@ public class admin_verify extends AppCompatActivity {
 
     FirebaseAuth fbauth ;
 
+    ProgressDialog progressDialog ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,8 @@ public class admin_verify extends AppCompatActivity {
         tvname.setText(intent.getStringExtra(admin_display.adminname)) ;
         tvnum.setText(intent.getStringExtra(admin_display.adminnum)) ;
 
+        progressDialog = new ProgressDialog( admin_verify.this ) ;
+
         sendotp() ;
 
         btn_verify.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +72,10 @@ public class admin_verify extends AppCompatActivity {
 
 
     private void sendotp() {
+
+        progressDialog.setMessage( "Sending otp." );
+        progressDialog.show() ;
+
         String num = "+91" + tvnum.getText().toString() ;
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -95,6 +104,8 @@ public class admin_verify extends AppCompatActivity {
 
             sent_code = s ;
 
+            progressDialog.dismiss() ;
+
         }
 
     } ;
@@ -109,6 +120,9 @@ public class admin_verify extends AppCompatActivity {
         }
 
         try {
+            progressDialog.setMessage( "Verifying....Please wait." );
+            progressDialog.show() ;
+
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(sent_code, code) ;
 
             signInWithPhoneAuthCredential(credential) ;
@@ -125,6 +139,8 @@ public class admin_verify extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) { // if verifiaction is successful
+
+                            progressDialog.dismiss() ;
 
                             Toast.makeText( getApplicationContext() , "Verification approved." , Toast.LENGTH_LONG).show() ;
 

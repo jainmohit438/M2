@@ -7,6 +7,13 @@
     tools:context=".salary"
     android:background="@color/darkpurple">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/imgterm"
+        android:src="@drawable/worker_accept"
+        android:layout_marginTop="25dp"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="65dp"
@@ -15,13 +22,6 @@
         android:text="Salary offered :-"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_marginTop="25dp"/>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/imgterm"
-        android:src="@drawable/worker_accept"
-        android:layout_marginTop="25dp"/>
-
 
     <ListView
         android:layout_width="match_parent"

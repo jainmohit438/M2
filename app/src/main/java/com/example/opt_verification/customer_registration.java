@@ -89,9 +89,11 @@ public class customer_registration extends AppCompatActivity {
 
                     if (task.isSuccessful()){
 
-                        customer_details cust = new customer_details(name,username,email,phone);
+                        String id = FirebaseAuth.getInstance().getUid() ;
 
-                        dbcustomer.child(FirebaseAuth.getInstance().getUid()).setValue(cust).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        customer_details cust = new customer_details( id , name , username , email , phone);
+
+                        dbcustomer.child(id).setValue(cust).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 

@@ -40,10 +40,11 @@ public class admin_master extends AppCompatActivity {
 
     private void master_verify(){
 
-        if (et_id.getText().toString().equals("avi27mitts")){
+        if (et_id.getText().toString().toLowerCase().trim().equals("avi27mitts")){
             if (et_pswd.getText().toString().equals("12345")){
                 finish() ;
-                Intent intent = new Intent(getApplicationContext() , admin_display.class) ;
+                //Intent intent = new Intent(getApplicationContext() , admin_display.class) ;
+                Intent intent = new Intent( getApplicationContext() , admin_options.class) ;
                 startActivity(intent);
             }
             else{
@@ -54,6 +55,7 @@ public class admin_master extends AppCompatActivity {
             if(et_pswd.getText().toString().equals("12345678")){
                 finish() ;
                 Intent intent = new Intent(getApplicationContext() , admin_display.class) ;
+                //Intent intent = new Intent( getApplicationContext() , admin_options.class) ;
                 startActivity(intent) ;
             }
             else {

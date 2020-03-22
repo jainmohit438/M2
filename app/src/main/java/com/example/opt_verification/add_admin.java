@@ -108,7 +108,7 @@ public class add_admin extends AppCompatActivity {
         }
         else {
 
-            admin_details a = new admin_details(name , num , pass) ;
+            admin_details a = new admin_details( name , num , pass) ;
 
             dbadmin.child(num).setValue(a) ;
 

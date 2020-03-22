@@ -57,9 +57,16 @@ public class customer_options extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_options);
 
-        dbcustomer    = FirebaseDatabase.getInstance().getReference("customer")    ;
+        dbcustomer = FirebaseDatabase.getInstance().getReference("customer") ;
 
         tv_name = findViewById(R.id.tv_cust_name) ;
+
+        tv_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText( getApplicationContext() , c_name + "." , Toast.LENGTH_SHORT).show() ;
+            }
+        });
 
         btn_logout = findViewById(R.id.btn_customer_logout) ;
         btn_new = findViewById(R.id.co_btn_new) ;
@@ -109,14 +116,28 @@ public class customer_options extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //progressDialog.setMessage("Logging out....please wait!!");
-                //progressDialog.show() ;
+                AlertDialog.Builder builder = new AlertDialog.Builder( customer_options.this ) ;
+                builder.setMessage("Are you sure you want to logout?")
+                        .setCancelable(true)
+                        .setPositiveButton("Yes!LOGOUT.", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                fbauth.signOut();
+                                finish() ;
+                                Intent intent = new Intent( getApplicationContext() , customer_login.class) ;
+                                startActivity(intent) ;
+                            }
+                        })
+                        .setNegativeButton("No!Book another appointment.", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
 
-                fbauth.signOut() ;
-                finish() ;
-                Intent intent = new Intent( getApplicationContext() , customer_login.class) ;
-                startActivity(intent) ;
+                                dialogInterface.cancel() ;
+                            }
+                        });
 
+                AlertDialog alertDialog = builder.create() ;
+                alertDialog.show() ;
             }
         });
     }
@@ -125,7 +146,7 @@ public class customer_options extends AppCompatActivity {
     public void onBackPressed() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder( this ) ;
-        builder.setMessage("Are you sure you want to wait? You will be logged out!! ")
+        builder.setMessage("Are you sure you want to exit? You will be logged out!! ")
                 .setCancelable(true)
                 .setPositiveButton("Yes!LOGOUT.", new DialogInterface.OnClickListener() {
                     @Override
@@ -134,7 +155,7 @@ public class customer_options extends AppCompatActivity {
                         customer_options.super.onBackPressed() ;
                     }
                 })
-                .setNegativeButton("No!Set another appointment.", new DialogInterface.OnClickListener() {
+                .setNegativeButton("No!Book another appointment.", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -151,8 +172,6 @@ public class customer_options extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        progressDialog.setMessage("Loading...");
-        progressDialog.show() ;
         dbcustomer.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -167,7 +186,5 @@ public class customer_options extends AppCompatActivity {
 
             }
         }) ;
-
-        progressDialog.dismiss() ;
     }
 }

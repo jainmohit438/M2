@@ -5,17 +5,26 @@ import java.util.Date;
 
 public class appointment {
 
-    String customer , worker , work ;
+    String id , customer , worker , work ;
     Date d ;
 
     public appointment() {
     }
 
-    public appointment(String customer, String worker, String work, Date d) {
+    public appointment(String id, String customer, String worker, String work, Date d) {
+        this.id = id;
         this.customer = customer;
         this.worker = worker;
         this.work = work;
         this.d = d;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCustomer() {

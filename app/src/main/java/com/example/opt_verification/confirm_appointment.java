@@ -4,17 +4,26 @@ import java.util.Date;
 
 public class confirm_appointment {
 
-    String cname , wname , work ;
+    String id , cname , wname , work ;
     Date d ;
 
     public confirm_appointment() {
     }
 
-    public confirm_appointment(String cname, String wname, String work, Date d) {
+    public confirm_appointment(String id, String cname, String wname, String work, Date d) {
+        this.id = id;
         this.cname = cname;
         this.wname = wname;
         this.work = work;
         this.d = d;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCname() {
