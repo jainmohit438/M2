@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".worker_pending"></activity>
+        <activity android:name=".worker_pending" />
         <activity android:name=".worker_options" />
         <activity android:name=".worker_confirm" />
         <activity android:name=".customer_confirm_appointment" />

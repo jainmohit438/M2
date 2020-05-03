@@ -19,7 +19,8 @@ public class worker_confirm extends AppCompatActivity {
 
     ListView lv ;
     List<confirm_appointment> l ;
-    DatabaseReference dbwa ;
+    DatabaseReference dbca ;
+    String na ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +30,8 @@ public class worker_confirm extends AppCompatActivity {
         lv = findViewById(R.id.wc_lv) ;
         l = new ArrayList<>() ;
 
-        String na = getIntent().getStringExtra( worker_options.na ) ;
-        dbwa = FirebaseDatabase.getInstance().getReference("wappointment").child(na) ;
+        na = getIntent().getStringExtra( worker_options.na ) ;
+        dbca = FirebaseDatabase.getInstance().getReference("confirmed") ;
 
     }
 
@@ -38,14 +39,16 @@ public class worker_confirm extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        dbwa.addValueEventListener(new ValueEventListener() {
+        dbca.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 l.clear() ;
                 for (DataSnapshot ds : dataSnapshot.getChildren() ){
                     confirm_appointment ca = ds.getValue(confirm_appointment.class) ;
-                    l.add(ca) ;
+                    if( ca.getWid().equals(na) ){
+                        l.add(ca) ;
+                    }
                 }
 
                 w_confirm adapter = new w_confirm( worker_confirm.this , l );

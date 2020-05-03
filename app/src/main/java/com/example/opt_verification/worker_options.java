@@ -25,7 +25,7 @@ public class worker_options extends AppCompatActivity {
     TextView tv_name , tv_work ;
     Button btn_pending , btn_confirm ;
     DatabaseReference db , dbw ;
-    String wrk , wname , num="a" , n ;
+    String wrk , wname , num="a" ;
     public static final String w = "work" , na = "name";
     FirebaseAuth fbauth ;
 
@@ -42,13 +42,11 @@ public class worker_options extends AppCompatActivity {
         fbauth = FirebaseAuth.getInstance() ;
         FirebaseUser user = fbauth.getCurrentUser() ;
 
-        String abc = user.getUid() ;
-
         dbw = FirebaseDatabase.getInstance().getReference("workers").child(user.getUid()) ;
 
         String nl = "no" ;
         nl = getIntent().getStringExtra(worker_login.NUMBER) ;
-        String n ;
+        final String n ;
         n = nl ;
 
         db = FirebaseDatabase.getInstance().getReference("workers").child(n) ;
@@ -57,8 +55,7 @@ public class worker_options extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( getApplicationContext() , worker_pending.class) ;
-                intent.putExtra(w , wrk ) ;
-                intent.putExtra( na , wname) ;
+                intent.putExtra( na , n ) ;
                 startActivity( intent ) ;
             }
         });
@@ -67,7 +64,7 @@ public class worker_options extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( getApplicationContext() , worker_confirm.class) ;
-                intent.putExtra( na , wname) ;
+                intent.putExtra( na , n ) ;
                 startActivity( intent );
             }
         });

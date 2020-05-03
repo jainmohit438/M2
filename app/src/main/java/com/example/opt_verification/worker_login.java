@@ -82,6 +82,7 @@ public class worker_login extends AppCompatActivity {
             public void onClick(View view) {
                 sendotp();
             }
+            
         });
 
         btnverify.setOnClickListener(new View.OnClickListener() {

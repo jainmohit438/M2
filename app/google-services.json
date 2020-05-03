@@ -8,7 +8,73 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:412092690995:android:638efe333962e44a33a946",
+        "mobilesdk_app_id": "1:412092690995:android:2bae50909986f3c933a946",
+        "android_client_info": {
+          "package_name": "com.example.firstapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412092690995-vch5h9tkdf7jh5qv6tl58p6623a91ai5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firstapp",
+            "certificate_hash": "c9e0093a678a08b144a6b1172c7e501c124a7574"
+          }
+        },
+        {
+          "client_id": "412092690995-c5r2ms80bm35lkv1d5l0moh0qbp7staf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgVBTyuKVZxafczC5bjdsOIA41bX9HJtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412092690995-c5r2ms80bm35lkv1d5l0moh0qbp7staf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412092690995:android:2f74899d85443c0f33a946",
+        "android_client_info": {
+          "package_name": "com.example.myapplication1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412092690995-c5r2ms80bm35lkv1d5l0moh0qbp7staf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgVBTyuKVZxafczC5bjdsOIA41bX9HJtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412092690995-c5r2ms80bm35lkv1d5l0moh0qbp7staf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412092690995:android:f8ca2cb9bc6b7c0633a946",
         "android_client_info": {
           "package_name": "com.example.opt_verification"
         }

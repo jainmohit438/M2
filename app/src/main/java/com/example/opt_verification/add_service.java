@@ -67,11 +67,8 @@ public class add_service extends AppCompatActivity {
 
                 final services_detail s = servicelist.get(i) ;
 
-                //Toast.makeText( getApplicationContext() , s.getName() , Toast.LENGTH_SHORT).show() ;
-
                 final AlertDialog.Builder builder = new AlertDialog.Builder( add_service.this ) ;
                 final AlertDialog.Builder builder1 = new AlertDialog.Builder( add_service.this ) ;
-
 
                 builder.setMessage("Enter new salary of " + s.getName() + ".")
                         .setView(new_sal)

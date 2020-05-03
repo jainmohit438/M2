@@ -1,15 +1,22 @@
 package com.example.opt_verification;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,89 +25,114 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 
 public class customer_pending_appointment extends AppCompatActivity {
 
-    DatabaseReference dbpa , dbcustomer ;
-    ListView lv ;
-    List<pending_appointment> pa_list ;
-    String na = "abc" ;
-    FirebaseAuth fbauth ;
+    private Spinner sp ;
+    private ListView lv ;
+    private List<pending_appointment> pal ;
+    private DatabaseReference dbpa ;
+    private Date c_date = new Date() ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_pending_appointment);
 
-        pa_list = new ArrayList<>() ;
+        sp = findViewById(R.id.cpa_spinner) ;
         lv = findViewById(R.id.cpa_lv) ;
 
-        na = getIntent().getStringExtra(customer_options.customer_name) ;
+        pal = new ArrayList<>() ;
+
         dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
-        dbcustomer = FirebaseDatabase.getInstance().getReference("customer") ;
-        fbauth = FirebaseAuth.getInstance() ;
+
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                final String choice = adapterView.getItemAtPosition(i).toString() ;
+
+                dbpa.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        pal.clear() ;
+
+                        for ( DataSnapshot ds : dataSnapshot.getChildren() ){
+
+                            pending_appointment pa = ds.getValue(pending_appointment.class) ;
+                            String n = pa.getCid() ;
+                            if( FirebaseAuth.getInstance().getCurrentUser().getUid().equals(n) )
+                            {
+
+                                if (choice.equals("Upcoming"))
+                                {
+                                    if( pa.getD().after(c_date) )
+                                    {
+                                        pal.add(pa) ;
+                                    }
+                                }
+                                else if (choice.equals("Expired"))
+                                {
+                                    if( pa.getD().before(c_date) )
+                                    {
+                                        pal.add(pa) ;
+                                    }
+                                }
+                            }
+                        }
+
+                        customer_pending_for_customer adapter = new customer_pending_for_customer( customer_pending_appointment.this , pal ) ;
+
+                        lv.setAdapter(adapter) ;
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                pending_appointment pa = pa_list.get(i) ;
-                final String idpa = pa.getId() ;
+                final pending_appointment p = pal.get(i) ;
 
-                AlertDialog.Builder builder = new AlertDialog.Builder( customer_pending_appointment.this ) ;
-                builder.setMessage("Are you sure you want to cancel this appointment?")
+                final AlertDialog.Builder bld = new AlertDialog.Builder( customer_pending_appointment.this ) ;
+
+                bld.setMessage("Are you sure you want to cancel " + p.getWork() + " at " + p.getD() + " ?")
                         .setCancelable(true)
-                        .setPositiveButton("Yes, CANCEL!", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Yes cancel!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                dbpa.child(idpa).removeValue() ;
+                                dbpa.child(p.getId()).removeValue() ;
                             }
                         })
-                        .setNegativeButton("No!", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("NO!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
-                                dialogInterface.cancel() ;
+                                return ;
                             }
                         });
 
-                AlertDialog alertDialog = builder.create() ;
-                alertDialog.show() ;
+                AlertDialog a = bld.create() ;
 
-
+                if (p.getD().after(c_date)){
+                    a.show() ;
+                }
             }
         });
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        dbpa.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                pa_list.clear() ;
-
-                for (DataSnapshot psnap : dataSnapshot.getChildren()){
-                    pending_appointment p = psnap.getValue(pending_appointment.class) ;
-                    String n = p.getCname() ;
-                    if ( na.equals( n ) ) {
-                        pa_list.add(p) ;
-                    }
-                }
-
-                customer_pending_for_customer adapter = new customer_pending_for_customer( customer_pending_appointment.this , pa_list );
-
-                lv.setAdapter(adapter) ;
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        }) ;
     }
 }

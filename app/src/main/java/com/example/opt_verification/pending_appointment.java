@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class pending_appointment {
 
-    String id , cname , work ;
+    String id , cid , work ;
     Date d;
 
     public pending_appointment() {
     }
 
-    public pending_appointment(String id , String cname , String w , Date d) {
+    public pending_appointment(String id , String cid , String w , Date d) {
         this.id = id ;
-        this.cname = cname;
+        this.cid = cid ;
         this.work = w ;
         this.d = d;
     }
@@ -25,12 +25,12 @@ public class pending_appointment {
         this.id = id;
     }
 
-    public String getCname() {
-        return cname;
+    public String getCid() {
+        return cid;
     }
 
-    public void setCname(String cname) {
-        this.cname = cname;
+    public void setCid(String cid) {
+        this.cid = cid;
     }
 
     public String getWork() {

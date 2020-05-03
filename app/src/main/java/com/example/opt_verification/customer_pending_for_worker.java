@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 public class customer_pending_for_worker extends ArrayAdapter<pending_appointment> {
@@ -30,7 +32,7 @@ public class customer_pending_for_worker extends ArrayAdapter<pending_appointmen
 
         pending_appointment pa = pa1.get(pos) ;
 
-        tv_cname.setText(pa.getCname());
+        tv_cname.setText( FirebaseDatabase.getInstance().getReference("customer").child(pa.getCid()).child("name").toString() );
         tv_date.setText(pa.getD().toString());
 
         return lv_item ;

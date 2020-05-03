@@ -89,7 +89,6 @@ public class customer_options extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( getApplicationContext() , customer_new_appointment.class) ;
-                intent.putExtra(customer_name , c_name ) ;
                 startActivity(intent);
             }
         });
@@ -98,7 +97,6 @@ public class customer_options extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( getApplicationContext() , customer_pending_appointment.class) ;
-                intent.putExtra(customer_name , c_name) ;
                 startActivity(intent);
             }
         });
@@ -107,7 +105,6 @@ public class customer_options extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( getApplicationContext() , customer_confirm_appointment.class) ;
-                intent.putExtra(customer_name , c_name) ;
                 startActivity(intent) ;
             }
         });

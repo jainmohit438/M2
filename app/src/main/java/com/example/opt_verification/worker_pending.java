@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,9 +27,9 @@ public class worker_pending extends AppCompatActivity {
 
     ListView lv ;
     List<pending_appointment> li ;
-    DatabaseReference dbpa , dbwa , dbca , dbw ;
-    String idpa , wrk , cname , wname ;
-    Date da ;
+    DatabaseReference dbpa , dbca , dbw ;
+    String idpa , wrk , cid , wnum ;
+    Date da , cdate = new Date() ;
     TextView tv ;
 
     @Override
@@ -38,16 +39,14 @@ public class worker_pending extends AppCompatActivity {
 
         lv = findViewById(R.id.wp_lv) ;
         li = new ArrayList<>() ;
-        dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
-        dbwa = FirebaseDatabase.getInstance().getReference("wappointment") ;
-        dbca = FirebaseDatabase.getInstance().getReference("cappointment") ;
-        //dbw = FirebaseDatabase.getInstance().getReference("workers").child() ;
 
-        wrk = getIntent().getStringExtra( worker_options.w ) ;
-        wname = getIntent().getStringExtra( worker_options.na) ;
+        dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
+        dbw = FirebaseDatabase.getInstance().getReference("workers").child(wnum) ;
+
+        wnum = getIntent().getStringExtra( worker_options.na) ;
+        Toast.makeText( getApplicationContext() , wnum , Toast.LENGTH_SHORT ).show() ;
 
         tv = findViewById(R.id.wp_tv_work) ;
-        tv.setText("Pending appointments for " + wrk + " are :") ;
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -57,25 +56,20 @@ public class worker_pending extends AppCompatActivity {
                 idpa = pa1.getId() ;
                 //Toast.makeText(getApplicationContext() , "af" , Toast.LENGTH_SHORT).show() ;
 
-                cname = pa1.getCname() ;
+                cid = pa1.getCid() ;
                 da = pa1.getD() ;
 
-                dbwa = FirebaseDatabase.getInstance().getReference("wappointment").child(wname) ;
-                dbca = FirebaseDatabase.getInstance().getReference("cappointment").child(cname) ;
+                dbca = FirebaseDatabase.getInstance().getReference("confirmed") ;
 
                 AlertDialog.Builder builder1 = new AlertDialog.Builder( worker_pending.this ) ;
-                builder1.setMessage("Are you sure you want to accept " + wrk + " for " + cname + " at " + da + " ??")
+                builder1.setMessage("Are you sure you want to accept " + wrk + " for " + FirebaseDatabase.getInstance().getReference("customer").child(cid).child("name").toString() + " at " + da + " ??")
                         .setCancelable(true)
                         .setPositiveButton("YES,ACCEPT!!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                String idw = dbwa.push().getKey() ;
-                                confirm_appointment acw = new confirm_appointment( idw , cname , wname , wrk , da ) ;
-                                dbwa.child(idw).setValue(acw) ;
-
                                 String idc = dbca.push().getKey() ;
-                                confirm_appointment acc = new confirm_appointment( idc , cname , wname , wrk , da ) ;
+                                confirm_appointment acc = new confirm_appointment( idc , cid , wnum , wrk , da ) ;
                                 dbca.child(idc).setValue(acc) ;
 
                                 dbpa.child(idpa).removeValue() ;
@@ -93,12 +87,26 @@ public class worker_pending extends AppCompatActivity {
                 al.show();
             }
         });
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        dbw.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                wrk = dataSnapshot.child("work").getValue().toString() ;
+                tv.setText("Pending appointments for " + wrk + " are :") ;
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         dbpa.addValueEventListener(new ValueEventListener() {
             @Override
@@ -108,7 +116,7 @@ public class worker_pending extends AppCompatActivity {
 
                 for (DataSnapshot appsnap : dataSnapshot.getChildren()){
                     pending_appointment p = appsnap.getValue(pending_appointment.class) ;
-                    if (p.getWork().equals(wrk)){
+                    if (p.getWork().equals(wrk) && p.getD().after(cdate) ){
                         li.add(p) ;
                     }
                 }

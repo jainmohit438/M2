@@ -10,11 +10,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class admin_options extends AppCompatActivity {
 
     Button btn_cust , btn_work , btn_serv , btn_admin ;
     FirebaseAuth fbauth ;
+    DatabaseReference dbr ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

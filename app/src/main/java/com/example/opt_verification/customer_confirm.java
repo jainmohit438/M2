@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -31,8 +34,10 @@ public class customer_confirm extends ArrayAdapter<confirm_appointment> {
 
         confirm_appointment a = a1.get(pos);
 
+        String wname = FirebaseDatabase.getInstance().getReference("workers").child(a.getWid()).child("name").toString() ;
+
         tv_wrk.setText(a.getWork());
-        tv_wname.setText(a.getWname());
+        tv_wname.setText(wname);
         tv_date.setText(a.getD().toString());
 
         return lv_item;

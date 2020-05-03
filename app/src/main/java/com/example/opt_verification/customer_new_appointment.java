@@ -54,8 +54,8 @@ public class customer_new_appointment extends AppCompatActivity
     Integer year_final , month_final , date_final , hour_final , minute_final ;
 
     FirebaseAuth fbauth ;
+    FirebaseUser user ;
 
-    String customer_name ;
     services_detail s ;
 
     @Override
@@ -71,10 +71,7 @@ public class customer_new_appointment extends AppCompatActivity
         dbpappointment = FirebaseDatabase.getInstance().getReference("pappointment") ;
 
         fbauth = FirebaseAuth.getInstance() ;
-
-        FirebaseUser user = fbauth.getCurrentUser() ;
-
-        customer_name = getIntent().getStringExtra(customer_options.customer_name) ;
+        user = fbauth.getCurrentUser() ;
 
         if ( user == null){
             finish() ;
@@ -165,7 +162,7 @@ public class customer_new_appointment extends AppCompatActivity
 
         if (date.after(current_date)){
             String idw = dbpappointment.push().getKey() ;
-            pending_appointment pa = new pending_appointment ( idw , customer_name , s.getName() , date ) ;
+            pending_appointment pa = new pending_appointment ( idw , user.getUid() , s.getName() , date ) ;
             dbpappointment.child(idw).setValue(pa) ;
 
             Toast.makeText(getApplicationContext() , "Appointment set." , Toast.LENGTH_SHORT).show() ;

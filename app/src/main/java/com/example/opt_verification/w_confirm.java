@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 public class w_confirm extends ArrayAdapter<confirm_appointment> {
@@ -31,8 +33,10 @@ public class w_confirm extends ArrayAdapter<confirm_appointment> {
 
         confirm_appointment a = a1.get(pos);
 
+        String cname = FirebaseDatabase.getInstance().getReference("customer").child(a.getCid()).child("name").toString() ;
+
         tv_wrk.setText(a.getWork());
-        tv_wname.setText(a.getCname());
+        tv_wname.setText(cname);
         tv_date.setText(a.getD().toString());
 
         return lv_item;
