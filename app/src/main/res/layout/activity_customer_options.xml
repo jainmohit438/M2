@@ -54,14 +54,25 @@
                 android:layout_marginTop="25dp"/>
 
             <Button
+                android:id="@+id/co_btn_confirmed"
+                android:text="View confirmed appointments."
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:textSize="20dp"
                 android:background="@color/airforceblue"
                 android:textColor="@color/amber"
-                android:id="@+id/co_btn_confirmed"
-                android:text="View confirmed appointments."
                 android:layout_below="@+id/co_btn_pending"
+                android:layout_marginTop="25dp"/>
+
+            <Button
+                android:id="@+id/co_btn_edit_details"
+                android:text="Edit details."
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:textSize="20dp"
+                android:background="@color/airforceblue"
+                android:textColor="@color/amber"
+                android:layout_below="@+id/co_btn_confirmed"
                 android:layout_marginTop="25dp"/>
 
             <Button
@@ -73,7 +84,7 @@
                 android:textColor="@color/amber"
                 android:id="@+id/btn_customer_logout"
                 android:text="LOGOUT"
-                android:layout_below="@+id/co_btn_confirmed"
+                android:layout_below="@+id/co_btn_edit_details"
                 android:layout_marginBottom="25dp" />
 
         </RelativeLayout>

@@ -28,6 +28,7 @@
         android:layout_below="@+id/cca_s"
         android:id="@+id/cca_lv"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"/>
+        android:layout_marginBottom="25dp"
+        android:background="@color/airforceblue"/>
 
 </RelativeLayout>

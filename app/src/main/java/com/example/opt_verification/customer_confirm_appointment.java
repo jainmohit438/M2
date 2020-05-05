@@ -26,7 +26,6 @@ public class customer_confirm_appointment extends AppCompatActivity {
     DatabaseReference dbca ;
     List<confirm_appointment> cl ;
     ListView lv ;
-    String uid ;
     private Spinner s ;
     private Date c_date = new Date() ;
 
@@ -35,7 +34,6 @@ public class customer_confirm_appointment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_confirm_appointment);
 
-        uid = FirebaseAuth.getInstance().getCurrentUser().getUid()  ;
         dbca = FirebaseDatabase.getInstance().getReference("confirmed") ;
         lv = findViewById(R.id.cca_lv) ;
         s = findViewById(R.id.cca_s) ;
@@ -57,7 +55,7 @@ public class customer_confirm_appointment extends AppCompatActivity {
 
                             confirm_appointment pa = ds.getValue(confirm_appointment.class) ;
                             String n = pa.getCid() ;
-                            if( uid.equals(pa.getCid()) )
+                            if( FirebaseAuth.getInstance().getCurrentUser().getUid().equals(n) )
                             {
                                 if (choice.equals("Upcoming"))
                                 {

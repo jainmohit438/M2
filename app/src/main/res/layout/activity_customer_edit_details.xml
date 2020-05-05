@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer_registration"
-    android:background="@color/darkpurple">
+    tools:context=".customer_edit_details">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,95 +22,83 @@
                 android:layout_marginTop="25dp"
                 tools:layout_editor_absoluteX="4dp" />
 
-            <EditText
-                android:id="@+id/etname"
+            <TextView
+                android:id="@+id/ced_tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
                 android:layout_below="@+id/imgcustomer_registration"
                 android:ems="10"
-                android:hint="Enter Your Name"
-                android:inputType="textPersonName"
                 tools:layout_editor_absoluteX="-16dp"
                 tools:layout_editor_absoluteY="250dp" />
 
 
             <EditText
-                android:id="@+id/etusername"
+                android:id="@+id/ced_et_username"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
-                android:layout_below="@+id/etname"
-                android:hint="Enter Your Username"
+                android:layout_below="@+id/ced_tv_name"
                 tools:layout_editor_absoluteX="-16dp"
                 tools:layout_editor_absoluteY="190dp" />
 
 
-            <EditText
-                android:id="@+id/etemail"
+            <TextView
+                android:id="@+id/ced_tv_email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
-                android:layout_below="@+id/etusername"
+                android:layout_below="@+id/ced_et_username"
                 android:ems="10"
-                android:hint="Enter Your Email"
-                android:inputType="textEmailAddress"
                 tools:layout_editor_absoluteX="-16dp"
                 tools:layout_editor_absoluteY="308dp" />
 
-
             <EditText
-                android:id="@+id/etpassword"
+                android:id="@+id/ced_et_address"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
-                android:layout_below="@+id/etemail"
+                android:layout_below="@+id/ced_tv_email"
                 android:ems="10"
-                android:hint="Enter Your Password"
-                android:inputType="textPassword"
                 tools:layout_editor_absoluteX="-34dp"
                 tools:layout_editor_absoluteY="371dp" />
 
-
             <EditText
-                android:id="@+id/etphone"
+                android:id="@+id/ced_et_phone"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
-                android:layout_below="@+id/etpassword"
+                android:layout_below="@+id/ced_et_address"
                 android:ems="10"
-                android:hint="Enter Your Phone No"
                 android:inputType="phone"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="431dp" />
 
-
-            <EditText
-                android:id="@+id/etaddress"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="25dp"
-                android:layout_below="@+id/etphone"
-                android:ems="10"
-                android:hint="Enter Your Address"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="431dp" />
-
             <Button
-                android:id="@+id/bsignup"
+                android:id="@+id/ced_btn_update"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="35dp"
-                android:layout_below="@+id/etaddress"
+                android:layout_below="@+id/ced_et_phone"
                 android:background="@color/airforceblue"
-                android:text="     Signup"
+                android:text="Update."
                 android:textColor="@color/amber"
                 android:textSize="35dp"
                 tools:layout_editor_absoluteX="-16dp"
                 tools:layout_editor_absoluteY="518dp" />
 
+            <Button
+                android:id="@+id/ced_btn_password"
+                android:text="Change password."
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/ced_btn_update"
+                android:textColor="@color/amber"
+                android:textSize="35dp"
+                android:background="@color/airforceblue"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="35dp"/>
+
         </RelativeLayout>
-
     </ScrollView>
-
 </RelativeLayout>

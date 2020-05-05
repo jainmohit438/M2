@@ -9,18 +9,19 @@ public class customer_details {
     String cusername;
     String cemail;
     String cphone;
-    List<appointment> a;
+    String caddress ;
 
     public customer_details() {
-        this.a = null ;
+
     }
 
-    public customer_details(String id , String cname, String cusername, String cemail , String cphone) {
+    public customer_details(String id , String cname, String cusername, String cemail , String cphone , String caddress) {
         this.id = id ;
         this.cname = cname;
         this.cusername = cusername;
         this.cemail = cemail;
         this.cphone = cphone;
+        this.caddress = caddress ;
     }
 
     public String getId() {
@@ -59,11 +60,12 @@ public class customer_details {
         this.cphone = cphone;
     }
 
-    public List<appointment> getA() {
-        return a;
+    public String getCAddress() {
+        return caddress;
     }
 
-    public void setA(List<appointment> a) {
-        this.a = a;
+    public void setCAddress(String address) {
+        this.caddress = address;
     }
+
 }

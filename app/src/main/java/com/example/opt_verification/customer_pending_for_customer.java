@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.Date;
 import java.util.List;
 
 public class customer_pending_for_customer extends ArrayAdapter<pending_appointment> {
@@ -30,8 +31,10 @@ public class customer_pending_for_customer extends ArrayAdapter<pending_appointm
 
         pending_appointment pa = pa1.get(pos) ;
 
+        Date d = pa.getD() ;
+
         tv_cname.setText(pa.getWork());
-        tv_date.setText(pa.getD().toString());
+        tv_date.setText( pa.getD().toString() );
 
         return lv_item ;
     }

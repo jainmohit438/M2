@@ -25,7 +25,7 @@ import java.util.List;
 
 public class customer_registration extends AppCompatActivity {
 
-    EditText etname ,etusername, etemail , etpassword , etphone;
+    EditText etname ,etusername, etemail , etpassword , etphone , etaddress;
 
     Button btn_register , btn_options ;
 
@@ -49,6 +49,7 @@ public class customer_registration extends AppCompatActivity {
         etemail= (EditText)findViewById(R.id.etemail);
         etpassword =(EditText) findViewById(R.id.etpassword);
         etphone= (EditText) findViewById(R.id.etphone);
+        etaddress = findViewById(R.id.etaddress) ;
 
         btn_register = findViewById(R.id.bsignup) ;
 
@@ -62,7 +63,6 @@ public class customer_registration extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void addcustomer(){
@@ -71,8 +71,9 @@ public class customer_registration extends AppCompatActivity {
         final String email    = etemail.getText().toString().trim()    ;
         final String pswd     = etpassword.getText().toString()        ;
         final String phone    = etphone.getText().toString().trim()    ;
+        final String add    = etaddress.getText().toString().trim()    ;
 
-        if(TextUtils.isEmpty(name)  || TextUtils.isEmpty(username) || TextUtils.isEmpty(email)  || TextUtils.isEmpty(phone) ){
+        if(TextUtils.isEmpty(name)  || TextUtils.isEmpty(username) || TextUtils.isEmpty(email)  || TextUtils.isEmpty(phone) || TextUtils.isEmpty(add) ){
 
             Toast.makeText(this,"Please Fill Your Entries correctly",Toast.LENGTH_LONG).show();
 
@@ -91,7 +92,7 @@ public class customer_registration extends AppCompatActivity {
 
                         String id = FirebaseAuth.getInstance().getUid() ;
 
-                        customer_details cust = new customer_details( id , name , username , email , phone);
+                        customer_details cust = new customer_details( id , name , username , email , phone , add );
 
                         dbcustomer.child(id).setValue(cust).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
@@ -105,6 +106,7 @@ public class customer_registration extends AppCompatActivity {
                                 etpassword.setText("");
                                 etphone.setText("");
                                 etusername.setText("");
+                                etaddress.setText("");
 
                                 finish() ;
                                 Intent intent = new Intent(getApplicationContext() , customer_options.class) ;
@@ -120,9 +122,6 @@ public class customer_registration extends AppCompatActivity {
                     }
                 }
             }) ;
-
         }
-
-
     }
 }

@@ -45,7 +45,7 @@ public class customer_options extends AppCompatActivity {
 
     FirebaseAuth fbauth ;
 
-    Button btn_logout , btn_new , btn_pending , btn_confirm ;
+    Button btn_logout , btn_new , btn_pending , btn_confirm , btn_edit ;
 
     ProgressDialog progressDialog ;
 
@@ -68,10 +68,11 @@ public class customer_options extends AppCompatActivity {
             }
         });
 
-        btn_logout = findViewById(R.id.btn_customer_logout) ;
         btn_new = findViewById(R.id.co_btn_new) ;
         btn_pending = findViewById(R.id.co_btn_pending) ;
         btn_confirm = findViewById(R.id.co_btn_confirmed) ;
+        btn_edit = findViewById(R.id.co_btn_edit_details) ;
+        btn_logout = findViewById(R.id.btn_customer_logout) ;
 
         fbauth = FirebaseAuth.getInstance() ;
 
@@ -106,6 +107,14 @@ public class customer_options extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent( getApplicationContext() , customer_confirm_appointment.class) ;
                 startActivity(intent) ;
+            }
+        });
+
+        btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( getApplicationContext() , customer_edit_details.class ) ;
+                startActivity( intent ) ;
             }
         });
 
