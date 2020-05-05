@@ -28,7 +28,7 @@ public class worker_pending extends AppCompatActivity {
     ListView lv ;
     List<pending_appointment> li ;
     DatabaseReference dbpa , dbca , dbw ;
-    String idpa , wrk , cid , wnum ;
+    String idpa , wrk , cid , wnum , wname ;
     Date da , cdate = new Date() ;
     TextView tv ;
 
@@ -40,26 +40,23 @@ public class worker_pending extends AppCompatActivity {
         lv = findViewById(R.id.wp_lv) ;
         li = new ArrayList<>() ;
 
-        dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
-        dbw = FirebaseDatabase.getInstance().getReference("workers").child(wnum) ;
-
         wnum = getIntent().getStringExtra( worker_options.na) ;
-        Toast.makeText( getApplicationContext() , wnum , Toast.LENGTH_SHORT ).show() ;
 
         tv = findViewById(R.id.wp_tv_work) ;
+
+        dbpa = FirebaseDatabase.getInstance().getReference("pappointment") ;
+        dbca = FirebaseDatabase.getInstance().getReference("confirmed") ;
+        dbw = FirebaseDatabase.getInstance().getReference("workers").child(wnum) ;
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                pending_appointment pa1 = li.get(i) ;
+                final pending_appointment pa1 = li.get(i) ;
                 idpa = pa1.getId() ;
-                //Toast.makeText(getApplicationContext() , "af" , Toast.LENGTH_SHORT).show() ;
 
                 cid = pa1.getCid() ;
                 da = pa1.getD() ;
-
-                dbca = FirebaseDatabase.getInstance().getReference("confirmed") ;
 
                 AlertDialog.Builder builder1 = new AlertDialog.Builder( worker_pending.this ) ;
                 builder1.setMessage("Are you sure you want to accept " + wrk + " for " + FirebaseDatabase.getInstance().getReference("customer").child(cid).child("name").toString() + " at " + da + " ??")
@@ -69,7 +66,7 @@ public class worker_pending extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
 
                                 String idc = dbca.push().getKey() ;
-                                confirm_appointment acc = new confirm_appointment( idc , cid , wnum , wrk , da ) ;
+                                confirm_appointment acc = new confirm_appointment( idc , cid , pa1.getCname() , wnum , wname , wrk , da ) ;
                                 dbca.child(idc).setValue(acc) ;
 
                                 dbpa.child(idpa).removeValue() ;
@@ -97,6 +94,7 @@ public class worker_pending extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                wname = dataSnapshot.child("name").getValue().toString() ;
                 wrk = dataSnapshot.child("work").getValue().toString() ;
                 tv.setText("Pending appointments for " + wrk + " are :") ;
 

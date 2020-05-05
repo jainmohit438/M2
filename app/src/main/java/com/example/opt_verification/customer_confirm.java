@@ -34,10 +34,8 @@ public class customer_confirm extends ArrayAdapter<confirm_appointment> {
 
         confirm_appointment a = a1.get(pos);
 
-        String wname = FirebaseDatabase.getInstance().getReference("workers").child(a.getWid()).child("name").toString() ;
-
         tv_wrk.setText(a.getWork());
-        tv_wname.setText(wname);
+        tv_wname.setText(a.getWname());
         tv_date.setText(a.getD().toString());
 
         return lv_item;

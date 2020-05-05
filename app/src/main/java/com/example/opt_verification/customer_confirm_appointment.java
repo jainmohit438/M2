@@ -57,9 +57,8 @@ public class customer_confirm_appointment extends AppCompatActivity {
 
                             confirm_appointment pa = ds.getValue(confirm_appointment.class) ;
                             String n = pa.getCid() ;
-                            if( FirebaseAuth.getInstance().getCurrentUser().getUid().equals(n) )
+                            if( uid.equals(pa.getCid()) )
                             {
-
                                 if (choice.equals("Upcoming"))
                                 {
                                     if( pa.getD().after(c_date) )
@@ -101,7 +100,6 @@ public class customer_confirm_appointment extends AppCompatActivity {
 
                 confirm_appointment ca = cl.get(i) ;
 
-
             }
 
             @Override
@@ -110,33 +108,5 @@ public class customer_confirm_appointment extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        dbca.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                cl.clear() ;
-
-                for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    confirm_appointment a = ds.getValue(confirm_appointment.class) ;
-                    if ( a.getCid().equals(uid) ){
-                        cl.add(a) ;
-                    }
-                }
-
-                customer_confirm adapter = new customer_confirm( customer_confirm_appointment.this , cl) ;
-                lv.setAdapter(adapter) ;
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        }) ;
     }
 }

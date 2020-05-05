@@ -73,6 +73,7 @@ public class worker_login extends AppCompatActivity {
 
             finish() ;
             Intent intent = new Intent( getApplicationContext() , worker_options.class) ;
+            intent.putExtra(NUMBER , etnumber.getText().toString()) ;
             startActivity( intent ) ;
 
         }
@@ -185,9 +186,7 @@ public class worker_login extends AppCompatActivity {
 
                                         finish() ;
                                         Intent intent = new Intent(getApplicationContext() , worker_options.class) ;
-                                        //intent.putExtra(numb , s.getWork()) ;
                                         intent.putExtra(NUMBER , etnumber.getText().toString()) ;
-                                        //Toast.makeText(getApplicationContext() , s.getWork() , Toast.LENGTH_SHORT).show();
                                         startActivity(intent) ;
 
                                     }
@@ -213,7 +212,9 @@ public class worker_login extends AppCompatActivity {
                         } else { // if verification fails
                             progressDialog.dismiss() ;
                             Toast.makeText( getApplicationContext() , "Verification failed." , Toast.LENGTH_LONG).show() ;
-
+                            Intent intent = new Intent(getApplicationContext() , worker_options.class) ;
+                            intent.putExtra(NUMBER , etnumber.getText().toString()) ;
+                            startActivity(intent) ;
                         }
                     }
                 });

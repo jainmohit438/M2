@@ -7,7 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -28,15 +34,13 @@ public class w_confirm extends ArrayAdapter<confirm_appointment> {
         View lv_item = inf.inflate(R.layout.customer_confirm, null, true);
 
         TextView tv_wrk = lv_item.findViewById(R.id.cc_tv_work);
-        TextView tv_wname = lv_item.findViewById(R.id.cc_tv_wname);
+        TextView tv_cname = lv_item.findViewById(R.id.cc_tv_wname);
         TextView tv_date = lv_item.findViewById(R.id.cc_tv_date);
 
         confirm_appointment a = a1.get(pos);
 
-        String cname = FirebaseDatabase.getInstance().getReference("customer").child(a.getCid()).child("name").toString() ;
-
         tv_wrk.setText(a.getWork());
-        tv_wname.setText(cname);
+        tv_cname.setText( a.getCname() );
         tv_date.setText(a.getD().toString());
 
         return lv_item;

@@ -4,17 +4,19 @@ import java.util.Date;
 
 public class confirm_appointment {
 
-    String id , cid , wid , work ;
+    String id , cid , cname , wid , wname , work ;
     Date d ;
     Float rating ;
 
     public confirm_appointment() {
     }
 
-    public confirm_appointment(String id, String cid, String wid, String work, Date d) {
+    public confirm_appointment(String id, String cid , String cname , String wid , String wname , String work, Date d) {
         this.id = id;
         this.cid = cid;
+        this.cname = cname ;
         this.wid = wid;
+        this.wname = wname ;
         this.work = work;
         this.d = d;
     }
@@ -33,6 +35,22 @@ public class confirm_appointment {
 
     public void setCid(String cname) {
         this.cid = cid;
+    }
+
+    public String getCname() {
+        return cname;
+    }
+
+    public void setCname(String cname) {
+        this.cname = cname;
+    }
+
+    public String getWname() {
+        return wname;
+    }
+
+    public void setWname(String wname) {
+        this.wname = wname;
     }
 
     public String getWid() {

@@ -7,7 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -32,9 +38,11 @@ public class customer_pending_for_worker extends ArrayAdapter<pending_appointmen
 
         pending_appointment pa = pa1.get(pos) ;
 
-        tv_cname.setText( FirebaseDatabase.getInstance().getReference("customer").child(pa.getCid()).child("name").toString() );
+        tv_cname.setText(pa.getCname());
         tv_date.setText(pa.getD().toString());
 
         return lv_item ;
     }
+
+
 }

@@ -39,12 +39,11 @@ public class customer_new_appointment extends AppCompatActivity
 
     List<services_detail> servicelist ;
 
-    DatabaseReference dbservice , dbpappointment ;
+    DatabaseReference dbservice , dbpappointment , dbcustomer ;
 
     Date date;
 
-    private DatePickerDialog.OnDateSetListener date_input ;
-    private TimePickerDialog.OnTimeSetListener time_input ;
+    String cust_name ;
 
     DatePickerDialog dp ;
     TimePickerDialog tp ;
@@ -67,11 +66,12 @@ public class customer_new_appointment extends AppCompatActivity
 
         servicelist = new ArrayList<>() ;
 
-        dbservice     = FirebaseDatabase.getInstance().getReference("services")    ;
-        dbpappointment = FirebaseDatabase.getInstance().getReference("pappointment") ;
-
         fbauth = FirebaseAuth.getInstance() ;
         user = fbauth.getCurrentUser() ;
+
+        dbservice     = FirebaseDatabase.getInstance().getReference("services")    ;
+        dbpappointment = FirebaseDatabase.getInstance().getReference("pappointment") ;
+        dbcustomer = FirebaseDatabase.getInstance().getReference("customer") ;
 
         if ( user == null){
             finish() ;
@@ -127,6 +127,18 @@ public class customer_new_appointment extends AppCompatActivity
 
             }
         });
+
+        dbcustomer.child( user.getUid() ).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                cust_name = dataSnapshot.child("cname").getValue().toString() ;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -162,7 +174,7 @@ public class customer_new_appointment extends AppCompatActivity
 
         if (date.after(current_date)){
             String idw = dbpappointment.push().getKey() ;
-            pending_appointment pa = new pending_appointment ( idw , user.getUid() , s.getName() , date ) ;
+            pending_appointment pa = new pending_appointment ( idw , user.getUid() , cust_name , s.getName() , date ) ;
             dbpappointment.child(idw).setValue(pa) ;
 
             Toast.makeText(getApplicationContext() , "Appointment set." , Toast.LENGTH_SHORT).show() ;
