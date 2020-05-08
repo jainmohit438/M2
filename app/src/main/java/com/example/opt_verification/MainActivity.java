@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_customer_login , btn_worker_login , btn_admin ;
+    Button btn_customer_login , btn_worker_login , btn_admin ,welcome,domain;
 
     Button btnverify , btnotp , btnnext ;
     EditText etnumber , etotp;

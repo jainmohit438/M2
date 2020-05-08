@@ -5,65 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".admin_options"
-    android:background="@color/darkpurple">
+    android:background="@drawable/bg4">
 
 
     <Button
         android:id="@+id/btn_customer_details"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/imgadmin_options"
-        android:background="@color/airforceblue"
-        android:text="View all customer."
-        android:textColor="@color/amber"
-        android:textSize="20dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/imgchip"
+        android:background="@drawable/vac"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="218dp" />
 
     <ImageView
-        android:id="@+id/imgadmin_options"
-        android:layout_width="407dp"
-        android:layout_height="203dp"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/customer2" />
+        android:id="@+id/imgchip"
+        android:layout_width="500dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/chip" />
 
     <Button
         android:id="@+id/btn_worker_details"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/btn_customer_details"
-        android:background="@color/airforceblue"
-        android:text="View all workers"
-        android:textColor="@color/amber"
-        android:textSize="20dp"
+        android:background="@drawable/vaw"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="312dp" />
 
     <Button
         android:id="@+id/btn_add_service"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/btn_worker_details"
-        android:background="@color/airforceblue"
-        android:text="Add a new service or edit existing services"
-        android:textColor="@color/amber"
-        android:textSize="20dp"
+        android:background="@drawable/aes"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="418dp" />
 
     <Button
         android:id="@+id/btn_add_admin"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/btn_add_service"
-        android:background="@color/airforceblue"
-        android:textColor="@color/amber"
-        android:textSize="20dp"
-        android:text="Add new admin"
+        android:background="@drawable/ana"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="516dp" />
 

@@ -5,15 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".add_admin"
-    android:background="@color/darkpurple">
+    android:background="@drawable/img">
 
 
     <EditText
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/imgadd_admin"
+        android:paddingLeft="20dp"
+        android:background="@drawable/et1"
         android:hint="Enter name of new admin."
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="218dp" />
@@ -22,8 +24,10 @@
         android:id="@+id/et_number"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="20dp"
         android:layout_below="@+id/et_name"
+        android:background="@drawable/et2"
         android:hint="Enter mobile number here."
         android:inputType="number"
         tools:layout_editor_absoluteX="0dp"
@@ -34,7 +38,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Enter password here."
-        android:layout_marginTop="15dp"
+        android:background="@drawable/et3"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="20dp"
         android:layout_below="@+id/et_number"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="387dp" />
@@ -44,19 +50,17 @@
         android:layout_width="409dp"
         android:layout_height="201dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/admin1"
+        android:src="@drawable/imgad"
         tools:layout_editor_absoluteX="-2dp"
         tools:layout_editor_absoluteY="2dp" />
 
     <Button
         android:id="@+id/btn_create_new_admin"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="Create"
-        android:textSize="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/et_password"
-        android:background="@color/airforceblue"
+        android:background="@drawable/create"
         android:textColor="@color/colorPrimary"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="513dp" />

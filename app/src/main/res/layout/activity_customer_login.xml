@@ -5,36 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".customer_login"
-    android:background="@color/darkpurple">
-
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="383dp"
-        android:layout_height="203dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/sign_in_logo"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="5dp" />
+    android:background="@drawable/bg2">
 
     <EditText
         android:id="@+id/etusername"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/username"
+        android:hint="Username"
+        android:paddingLeft="50dp"
         android:ems="10"
-        android:hint="Enter Your Username "
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="246dp"
-        android:layout_below="@+id/img"/>
+        android:layout_below="@+id/lg"/>
 
     <EditText
         android:id="@+id/etpassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="15dp"
+        android:background="@drawable/pass"
+        android:hint="Password"
+        android:paddingLeft="50dp"
         android:ems="10"
-        android:hint="Enter Your Password"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="320dp"
@@ -43,11 +38,10 @@
     <Button
         android:id="@+id/btn_submit_sigin"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/etpassword"
-        android:layout_marginTop="25dp"
-        android:background="@color/airforceblue"
-        android:text="sign in "
+        android:layout_marginTop="40dp"
+        android:background="@drawable/lgin"
         android:textColor="@color/amber"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="0dp"
@@ -56,14 +50,20 @@
     <Button
         android:id="@+id/bsignin"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="60dp"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/btn_submit_sigin"
-        android:background="@color/airforceblue"
-        android:text="Signup"
+        android:background="@drawable/signup"
         android:textColor="@color/amber"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="527dp" />
+
+    <ImageView
+        android:id="@+id/lg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/lg" />
 
 </RelativeLayout>

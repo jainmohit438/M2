@@ -5,53 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/darkpurple">
+    android:background="@drawable/bg">
 
 
-        <Button
-            android:id="@+id/btn_customer_login"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/imgmain"
-            android:background="@color/airforceblue"
-            android:text="Customers Click Here"
-            android:textColor="@color/amber"
-            android:textSize="20dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="361dp" />
+    <Button
+        android:id="@+id/welcome"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/w"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/welcome"
+        android:layout_marginTop="50dp"
+        android:id="@+id/domain"
+        android:background="@drawable/d"/>
 
-        <ImageView
-            android:id="@+id/imgmain"
-            android:layout_width="404dp"
-            android:layout_height="317dp"
-            android:src="@drawable/mainpage" />
+    <Button
+        android:id="@+id/btn_customer_login"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/domain"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/cu"
+        android:textColor="@color/amber"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="361dp" />
 
-        <Button
-            android:id="@+id/btn_worker_login"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="15dp"
-            android:layout_below="@+id/btn_customer_login"
-            android:background="@color/airforceblue"
-            android:text="Professionals Click here"
-            android:textColor="@color/amber"
-            android:textSize="20dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="437dp" />
+    <Button
+        android:id="@+id/btn_worker_login"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/btn_customer_login"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/pr"
+        android:textColor="@color/amber"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="437dp" />
 
-        <Button
-            android:id="@+id/btn_admin"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="15dp"
-            android:layout_below="@+id/btn_worker_login"
-            android:text="ADMIN LOGIN"
-            android:background="@color/airforceblue"
-            android:textColor="@color/amber"
-            android:textSize="20dp"
-            tools:layout_editor_absoluteX="-16dp"
-            tools:layout_editor_absoluteY="520dp" />
+    <Button
+        android:id="@+id/btn_admin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/btn_worker_login"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/ad"
+        android:textColor="@color/amber"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="520dp" />
 
 
 </RelativeLayout>
