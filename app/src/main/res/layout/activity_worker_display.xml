@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".worker_display"
-    android:background="@color/darkpurple">
+    android:background="@drawable/bg4">
 
     <ImageView
         android:layout_width="match_parent"
@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgviewallworker"
+        android:layout_marginTop="30dp"
         android:id="@+id/lvd2"></ListView>
 
 

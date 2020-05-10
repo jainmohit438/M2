@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".admin_verify"
-    android:background="@color/darkpurple">
+    android:background="@drawable/bg4">
 
 
     <ImageView
@@ -13,7 +13,7 @@
         android:layout_width="403dp"
         android:layout_height="212dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/otp"
+        android:src="@drawable/lg"
         tools:layout_editor_absoluteX="6dp"
         tools:layout_editor_absoluteY="4dp" />
 
@@ -35,9 +35,11 @@
     <EditText
         android:id="@+id/et_otp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/tv_num"
         android:hint="Enter otp received here."
+        android:background="@drawable/r1"
+        android:paddingLeft="15dp"
         android:inputType="number"
         tools:layout_editor_absoluteX="6dp"
         tools:layout_editor_absoluteY="243dp" />
@@ -45,12 +47,10 @@
     <Button
         android:id="@+id/btn_verify_admin"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/et_otp"
-        android:background="@color/airforceblue"
-        android:text="Verify."
-        android:textColor="@color/amber"
-        android:textSize="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/adverify"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="472dp" />
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".customer_options"
-    android:background="@color/darkpurple">
+    android:background="@drawable/cbg">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,56 +34,41 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:textSize="20dp"
-                android:background="@color/airforceblue"
-                android:textColor="@color/amber"
+                android:background="@drawable/cd1"
                 android:id="@+id/co_btn_new"
                 android:layout_below="@+id/tv_cust_name"
-                android:layout_marginTop="25dp"
-                android:text="Set a new appointment."/>
+                android:layout_marginTop="25dp" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:textSize="20dp"
-                android:background="@color/airforceblue"
-                android:textColor="@color/amber"
+                android:background="@drawable/cd2"
                 android:id="@+id/co_btn_pending"
-                android:text="View unconfirmed/pending appointments."
                 android:layout_below="@+id/co_btn_new"
                 android:layout_marginTop="25dp"/>
 
             <Button
                 android:id="@+id/co_btn_confirmed"
-                android:text="View confirmed appointments."
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:textSize="20dp"
-                android:background="@color/airforceblue"
-                android:textColor="@color/amber"
+                android:background="@drawable/cd3"
                 android:layout_below="@+id/co_btn_pending"
                 android:layout_marginTop="25dp"/>
 
             <Button
                 android:id="@+id/co_btn_edit_details"
-                android:text="Edit details."
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:textSize="20dp"
-                android:background="@color/airforceblue"
-                android:textColor="@color/amber"
+                android:background="@drawable/cd4"
                 android:layout_below="@+id/co_btn_confirmed"
                 android:layout_marginTop="25dp"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:layout_marginTop="25dp"
-                android:background="@color/airforceblue"
-                android:textSize="20dp"
-                android:textColor="@color/amber"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/cd5"
                 android:id="@+id/btn_customer_logout"
-                android:text="LOGOUT"
                 android:layout_below="@+id/co_btn_edit_details"
                 android:layout_marginBottom="25dp" />
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".customer_registration"
-    android:background="@color/darkpurple">
+    android:background="@drawable/cbg">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,16 +19,18 @@
                 android:id="@+id/imgcustomer_registration"
                 android:layout_width="407dp"
                 android:layout_height="163dp"
-                android:src="@drawable/signup3"
+                android:src="@drawable/lg"
                 android:layout_marginTop="25dp"
                 tools:layout_editor_absoluteX="4dp" />
 
             <EditText
                 android:id="@+id/etname"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="25dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="35dp"
                 android:layout_below="@+id/imgcustomer_registration"
+                android:background="@drawable/r1"
+                android:paddingLeft="15dp"
                 android:ems="10"
                 android:hint="Enter Your Name"
                 android:inputType="textPersonName"
@@ -39,9 +41,11 @@
             <EditText
                 android:id="@+id/etusername"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="35dp"
                 android:layout_marginTop="25dp"
                 android:layout_below="@+id/etname"
+                android:paddingLeft="15dp"
+                android:background="@drawable/r2"
                 android:hint="Enter Your Username"
                 tools:layout_editor_absoluteX="-16dp"
                 tools:layout_editor_absoluteY="190dp" />
@@ -50,9 +54,11 @@
             <EditText
                 android:id="@+id/etemail"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="35dp"
                 android:layout_marginTop="25dp"
                 android:layout_below="@+id/etusername"
+                android:background="@drawable/r3"
+                android:paddingLeft="15dp"
                 android:ems="10"
                 android:hint="Enter Your Email"
                 android:inputType="textEmailAddress"
@@ -63,9 +69,11 @@
             <EditText
                 android:id="@+id/etpassword"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="35dp"
                 android:layout_marginTop="25dp"
                 android:layout_below="@+id/etemail"
+                android:background="@drawable/r4"
+                android:paddingLeft="15dp"
                 android:ems="10"
                 android:hint="Enter Your Password"
                 android:inputType="textPassword"
@@ -76,9 +84,11 @@
             <EditText
                 android:id="@+id/etphone"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="35dp"
                 android:layout_marginTop="25dp"
                 android:layout_below="@+id/etpassword"
+                android:background="@drawable/r5"
+                android:paddingLeft="15dp"
                 android:ems="10"
                 android:hint="Enter Your Phone No"
                 android:inputType="phone"
@@ -89,9 +99,11 @@
             <EditText
                 android:id="@+id/etaddress"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:layout_marginTop="25dp"
                 android:layout_below="@+id/etphone"
+                android:background="@drawable/r6"
+                android:paddingLeft="15dp"
                 android:ems="10"
                 android:hint="Enter Your Address"
                 tools:layout_editor_absoluteX="0dp"
@@ -100,13 +112,11 @@
             <Button
                 android:id="@+id/bsignup"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="35dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="30dp"
                 android:layout_below="@+id/etaddress"
-                android:background="@color/airforceblue"
-                android:text="     Signup"
-                android:textColor="@color/amber"
-                android:textSize="35dp"
+                android:background="@drawable/sgup"
                 tools:layout_editor_absoluteX="-16dp"
                 tools:layout_editor_absoluteY="518dp" />
 

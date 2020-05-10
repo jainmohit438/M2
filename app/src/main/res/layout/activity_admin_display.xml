@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".admin_display"
-    android:background="@color/darkpurple">
+    android:background="@drawable/bg4">
 
     <ImageView
         android:layout_width="match_parent"
@@ -20,8 +20,9 @@
         android:layout_below="@+id/imgadminlist"
         android:id="@+id/ad_tv"
         android:text="EXISTING ADMINS :- "
+        android:textColor="@color/amber"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="40dp"/>
 
     <ListView
         android:layout_width="match_parent"

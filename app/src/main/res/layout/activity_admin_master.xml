@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".admin_master"
-    android:background="@color/darkpurple">
+    android:background="@drawable/bg4">
 
 
     <EditText
         android:id="@+id/et_master_id"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/r1"
+        android:paddingLeft="15dp"
         android:layout_below="@+id/imgadmin_master"
         android:hint="Enter username here."
         tools:layout_editor_absoluteX="0dp"
@@ -20,21 +22,20 @@
     <Button
         android:id="@+id/btn_master_login"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="Login "
-        android:layout_margin="35dp"
-        android:textSize="20dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="70dp"
         android:layout_below="@+id/et_master_password"
-        android:background="@color/airforceblue"
-        android:textColor="@color/amber"
+        android:background="@drawable/adlogin"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="462dp" />
 
     <EditText
         android:id="@+id/et_master_password"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/r1"
+        android:paddingLeft="15dp"
         android:layout_below="@+id/et_master_id"
         android:hint="Enter master password."
         tools:layout_editor_absoluteX="0dp"

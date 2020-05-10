@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".customer_display"
-    android:background="@color/darkpurple">
+    android:background="@drawable/bg4">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -15,7 +15,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="35dp"
         android:layout_below="@+id/imgviewallcustomer"
         android:id="@+id/lv_customer_display">
 

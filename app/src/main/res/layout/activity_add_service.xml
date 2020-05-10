@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".add_service"
-    android:background="@color/darkpurple">
+    android:background="@drawable/bg4">
 
     <ImageView
         android:id="@+id/imgadd_service"
-        android:layout_width="387dp"
+        android:layout_width="match_parent"
         android:layout_height="125dp"
         android:layout_marginTop="30dp"
         android:src="@drawable/salary" />
@@ -18,7 +18,9 @@
         android:id="@+id/et_new_service"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/r1"
+        android:paddingLeft="15dp"
         android:layout_below="@+id/imgadd_service"
         android:hint="Add new service here."
         tools:layout_editor_absoluteX="0dp"
@@ -28,7 +30,9 @@
         android:id="@+id/et_salary"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/r2"
+        android:paddingLeft="15dp"
         android:layout_below="@+id/et_new_service"
         android:hint="Enter salary here."
         android:inputType="number"
@@ -38,13 +42,10 @@
     <Button
         android:id="@+id/btn_add_serv"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="35dp"
         android:layout_below="@+id/et_salary"
-        android:background="@color/airforceblue"
-        android:textColor="@color/amber"
-        android:textSize="20dp"
-        android:text="Add "
+        android:background="@drawable/add"
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="482dp" />
 
@@ -53,7 +54,7 @@
         android:layout_height="match_parent"
         android:id="@+id/as_lv"
         android:layout_below="@+id/btn_add_serv"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="15dp"
         android:layout_alignParentBottom="true" />
 
