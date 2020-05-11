@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".customer_new_appointment"
-    android:background="@color/darkpurple">
+    android:background="@drawable/cbg">
 
     <ImageView
         android:layout_width="match_parent"

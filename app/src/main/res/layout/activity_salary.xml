@@ -35,11 +35,8 @@
         android:id="@+id/btn_accept"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:background="@color/airforceblue"
-        android:textColor="@color/amber"
-        android:textSize="20dp"
+        android:background="@drawable/pr1"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="25dp"
-        android:text="Accept and continue."/>
+        android:layout_marginBottom="25dp" />
 
 </RelativeLayout>

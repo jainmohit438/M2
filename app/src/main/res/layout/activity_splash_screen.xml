@@ -5,21 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".splash_screen"
-    android:background="@color/lightpurple">
+    android:background="@drawable/sp">
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/logo"
-        android:id="@+id/img"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:text="ONE STOP"
         android:id="@+id/tv_app_name"
         android:layout_below="@+id/img"
         android:textAlignment="center"
@@ -29,7 +21,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="The best solution to all your household needs"
         android:layout_below="@+id/tv_app_name"
         android:textAlignment="center"
         android:textSize="20dp"/>

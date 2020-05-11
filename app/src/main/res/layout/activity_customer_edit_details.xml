@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer_edit_details">
+    tools:context=".customer_edit_details"
+    android:background="@drawable/cbg">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,8 +26,9 @@
             <TextView
                 android:id="@+id/ced_tv_name"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="25dp"
+                android:textSize="25dp"
                 android:layout_below="@+id/imgcustomer_registration"
                 android:ems="10"
                 tools:layout_editor_absoluteX="-16dp"
@@ -38,6 +40,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
+                android:hint="Username"
+                android:paddingLeft="15dp"
+                android:background="@drawable/rect1"
                 android:layout_below="@+id/ced_tv_name"
                 tools:layout_editor_absoluteX="-16dp"
                 tools:layout_editor_absoluteY="190dp" />
@@ -46,7 +51,8 @@
             <TextView
                 android:id="@+id/ced_tv_email"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
+                android:textSize="25dp"
                 android:layout_marginTop="25dp"
                 android:layout_below="@+id/ced_et_username"
                 android:ems="10"
@@ -58,6 +64,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
+                android:hint="Address"
+                android:paddingLeft="15dp"
+                android:background="@drawable/rect2"
                 android:layout_below="@+id/ced_tv_email"
                 android:ems="10"
                 tools:layout_editor_absoluteX="-34dp"
@@ -68,7 +77,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
+                android:background="@drawable/rect3"
                 android:layout_below="@+id/ced_et_address"
+                android:hint="Phone"
+                android:paddingLeft="15dp"
                 android:ems="10"
                 android:inputType="phone"
                 tools:layout_editor_absoluteX="0dp"
@@ -78,24 +90,18 @@
                 android:id="@+id/ced_btn_update"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="50dp"
                 android:layout_below="@+id/ced_et_phone"
-                android:background="@color/airforceblue"
-                android:text="Update."
-                android:textColor="@color/amber"
-                android:textSize="35dp"
+                android:background="@drawable/cupdate"
                 tools:layout_editor_absoluteX="-16dp"
                 tools:layout_editor_absoluteY="518dp" />
 
             <Button
                 android:id="@+id/ced_btn_password"
-                android:text="Change password."
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/ced_btn_update"
-                android:textColor="@color/amber"
-                android:textSize="35dp"
-                android:background="@color/airforceblue"
+                android:background="@drawable/cpassword"
                 android:layout_marginTop="35dp"
                 android:layout_marginBottom="35dp"/>
 

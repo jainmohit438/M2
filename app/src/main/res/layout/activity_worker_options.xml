@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".worker_options"
-    android:background="@color/darkpurple">
+    android:background="@drawable/prof">
 
     <TextView
         android:layout_width="match_parent"
@@ -25,23 +25,17 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:background="@color/airforceblue"
-        android:textColor="@color/amber"
-        android:textSize="20dp"
+        android:background="@drawable/pr2"
         android:id="@+id/wo_btn_pending"
-        android:text="View work requests."
         android:layout_below="@+id/wo_tv_name"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="60dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:background="@color/airforceblue"
-        android:textColor="@color/amber"
-        android:textSize="20dp"
+        android:background="@drawable/pr3"
         android:id="@+id/wo_btn_confirmed"
-        android:text="View confirmed appointments."
         android:layout_below="@+id/wo_btn_pending"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="40dp"/>
 
 </RelativeLayout>
