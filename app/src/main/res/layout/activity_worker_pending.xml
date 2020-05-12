@@ -9,10 +9,13 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
+        android:textSize="30dp"
+        android:textColor="@color/white"
         android:id="@+id/wp_tv_work"
         android:layout_marginTop="15dp"
         android:layout_alignParentTop="true"
+        android:text="Your Pending Requests are : "
         android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
     <ListView
@@ -21,6 +24,7 @@
         android:id="@+id/wp_lv"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp"
+        android:background="@color/hue"
         android:layout_below="@+id/wp_tv_work"/>
 
 </RelativeLayout>

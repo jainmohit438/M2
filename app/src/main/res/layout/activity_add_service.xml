@@ -10,15 +10,15 @@
     <ImageView
         android:id="@+id/imgadd_service"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/logo" />
 
     <EditText
         android:id="@+id/et_new_service"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/r1"
         android:paddingLeft="15dp"
         android:layout_below="@+id/imgadd_service"
@@ -29,7 +29,7 @@
     <EditText
         android:id="@+id/et_salary"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/r2"
         android:paddingLeft="15dp"
@@ -42,7 +42,7 @@
     <Button
         android:id="@+id/btn_add_serv"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginTop="35dp"
         android:layout_below="@+id/et_salary"
         android:background="@drawable/add"

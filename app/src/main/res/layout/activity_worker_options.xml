@@ -20,7 +20,7 @@
         android:layout_height="200dp"
         android:layout_marginTop="25dp"
         android:id="@+id/imgwork_welcome"
-        android:src="@drawable/welcomework1"/>
+        android:src="@drawable/wpage"/>
 
     <Button
         android:layout_width="match_parent"

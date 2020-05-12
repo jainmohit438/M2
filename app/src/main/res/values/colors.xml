@@ -15,5 +15,10 @@
     <color name="lightpurple">#ede7f6</color>
     <color name="darkpurple">#d1c4e9</color>
     <color name="navyblue">#000080</color>
+    <color name="parrotgreen">#B2FC03</color>
+    <color name="hue">#8BEBD1</color>
+    <color name="magenta">#882751</color>
+    <color name="lightyellow">#A3DE69</color>
+    <color name="white">#FFFFFF</color>
 
 </resources>

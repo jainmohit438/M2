@@ -19,7 +19,7 @@
                 android:id="@+id/imgcustomer_registration"
                 android:layout_width="407dp"
                 android:layout_height="163dp"
-                android:src="@drawable/signup3"
+                android:src="@drawable/logo"
                 android:layout_marginTop="25dp"
                 tools:layout_editor_absoluteX="4dp" />
 

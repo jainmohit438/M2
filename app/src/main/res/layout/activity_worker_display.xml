@@ -12,12 +12,13 @@
         android:layout_height="200dp"
         android:layout_marginTop="25dp"
         android:id="@+id/imgviewallworker"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/plist"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgviewallworker"
         android:layout_marginTop="30dp"
+        android:background="@color/hue"
         android:id="@+id/lvd2"></ListView>
 
 

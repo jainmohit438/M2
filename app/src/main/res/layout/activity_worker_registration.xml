@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".worker_registration"
-    android:background="@color/darkpurple">
+    android:background="@drawable/prof">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,8 +21,11 @@
             <EditText
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="25dp"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="15dp"
+                android:background="@drawable/r1"
                 android:ems="10"
                 android:hint="Enter your name here"
                 android:inputType="textPersonName"
@@ -38,7 +41,9 @@
             <EditText
                 android:id="@+id/et_aadhar"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="40dp"
+                android:background="@drawable/r1"
+                android:paddingLeft="15dp"
                 android:layout_marginBottom="25dp"
                 android:ems="10"
                 android:hint="Enter your aadhar number here"
@@ -49,6 +54,7 @@
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
+                android:background="@color/hue"
                 android:id="@+id/wr_lv"
                 android:layout_marginBottom="25dp"/>
 
