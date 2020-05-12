@@ -50,7 +50,7 @@
         android:layout_width="409dp"
         android:layout_height="201dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/imgad"
+        android:src="@drawable/logo"
         tools:layout_editor_absoluteX="-2dp"
         tools:layout_editor_absoluteY="2dp" />
 
