@@ -138,7 +138,7 @@ public class admin_verify extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) { // if verifiaction is successful
+                        if (task.isSuccessful()) { // if verification is successful
 
                             progressDialog.dismiss() ;
 
